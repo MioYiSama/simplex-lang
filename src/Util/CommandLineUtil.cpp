@@ -1,8 +1,10 @@
 #include "CommandLineUtil.hpp"
 
 #ifdef SX_OS_WINDOWS
+// clang-format off
 #include <windows.h>
 #include <shellapi.h>
+// clang-format on
 #endif
 
 #include "StringUtil.hpp"
@@ -32,4 +34,4 @@ std::vector<std::string> parse_command_line_args(int argc, char* argv[]) {
   return result;
 }
 
-}
+}  // namespace sx::util
