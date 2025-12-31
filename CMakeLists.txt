@@ -12,10 +12,10 @@ target_sources(sx PRIVATE
     src/main.cpp
     src/Util/StringUtil.cpp
     src/Util/CommandLineUtil.cpp
-    src/Grammar/SimplexLexer.cpp
-    src/Grammar/SimplexParser.cpp
-    src/Grammar/SimplexBaseVisitor.cpp
-    src/Grammar/SimplexVisitor.cpp
+    # src/Grammar/SimplexLexer.cpp
+    # src/Grammar/SimplexParser.cpp
+    # src/Grammar/SimplexBaseVisitor.cpp
+    # src/Grammar/SimplexVisitor.cpp
 )
 
 # Configure OS
@@ -30,7 +30,7 @@ else ()
 endif ()
 
 add_custom_target(generate_grammar
-    COMMAND java -jar lib/antlr4/antlr4-4.13.2-complete.jar -package sx::grammar -visitor -no-listener src/Grammar/Simplex.g4
+    COMMAND java -jar lib/antlr4/antlr4-4.13.2-complete.jar -Dlanguage=Cpp -package sx::grammar -visitor -no-listener src/Grammar/Simplex.g4
     WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
 )
 
