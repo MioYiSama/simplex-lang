@@ -2,12 +2,13 @@
 
 #ifdef SX_OS_WINDOWS
 // clang-format off
+#define WIN32_LEAN_AND_MEAN
 #include <windows.h>
 #include <shellapi.h>
 // clang-format on
-#endif
 
 #include "StringUtil.hpp"
+#endif
 
 namespace sx::util {
 

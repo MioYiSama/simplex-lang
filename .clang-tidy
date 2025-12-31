@@ -8,9 +8,10 @@ Checks: >
   performance-*,
   portability-*,
   readability-*,
+  -modernize-avoid-c-arrays,
   -modernize-use-trailing-return-type,
-  -readability-qualified-auto,
-  -modernize-avoid-c-arrays
+  -readability-identifier-length,
+  -readability-qualified-auto
 
 CheckOptions:
   - key: readability-identifier-naming.AbstractClassCase
