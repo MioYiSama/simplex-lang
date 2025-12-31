@@ -1,0 +1,15 @@
+{
+  "[antlr]": {
+    "editor.defaultFormatter": "mike-lischke.vscode-antlr4"
+  },
+  "antlr4.generation": {
+    "mode": "none"
+  },
+  "antlr4.format": {
+    "useTab": false,
+    "alignColons": "hanging",
+    "alignSemicolons": "hanging",
+    "allowShortRulesOnASingleLine": false,
+    "allowShortBlocksOnASingleLine": true
+  }
+}

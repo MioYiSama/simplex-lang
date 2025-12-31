@@ -13,7 +13,10 @@ namespace sx::grammar {
 class  SimplexLexer : public antlr4::Lexer {
 public:
   enum {
-    NEWLINE = 1, CHAR = 2
+    L_PAREN = 1, R_PAREN = 2, L_BRACKET = 3, R_BRACKET = 4, L_BRACE = 5, 
+    R_BRACE = 6, COLON = 7, COMMA = 8, ASSIGN = 9, ARROW = 10, ADD = 11, 
+    SUB = 12, MUL = 13, DIV = 14, VAR = 15, CONST = 16, DEF = 17, TYPE = 18, 
+    ID = 19, INTEGER = 20, NEWLINE = 21, WHITESPACE = 22
   };
 
   explicit SimplexLexer(antlr4::CharStream *input);
