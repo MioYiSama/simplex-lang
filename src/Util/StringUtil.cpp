@@ -16,4 +16,14 @@ std::string to_u8string(const wchar_t* s) {
   return result;
 }
 
+std::string to_u8string(const std::u32string& s) {
+  std::string result{};
+
+  result.resize_and_overwrite(simdutf::utf8_length_from_utf32(s), [&](char* p, size_t) {
+    return simdutf::convert_utf32_to_utf8(s.data(), s.size(), p);
+  });
+
+  return result;
+}
+
 }  // namespace sx::util

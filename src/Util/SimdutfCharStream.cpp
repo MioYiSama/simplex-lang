@@ -8,6 +8,8 @@
 #include <stdexcept>
 #include <system_error>
 
+#include "StringUtil.hpp"
+
 namespace sx::util {
 
 SimdutfCharStream::SimdutfCharStream(const std::string &path) {
@@ -37,11 +39,10 @@ SimdutfCharStream::SimdutfCharStream(const std::string &path) {
 }
 
 std::string SimdutfCharStream::getText(const antlr4::misc::Interval &interval) {
-  content.substr(interval.a, interval.b);
-  return "";
+  return sx::util::to_u8string(content.substr(interval.a, interval.b - interval.a + 1));
 }
 
-std::string SimdutfCharStream::toString() const { return ""; }
+std::string SimdutfCharStream::toString() const { return sx::util::to_u8string(content); }
 
 void SimdutfCharStream::consume() {
   if (pos < content.size()) {
