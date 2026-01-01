@@ -12,7 +12,7 @@
 
 namespace sx::util {
 
-std::vector<std::string> parse_command_line_args(int argc, char* argv[]) {
+std::vector<std::string> parse_command_line_args(int argc, char *argv[]) {
 #ifdef SX_OS_WINDOWS
   const auto w_argv = CommandLineToArgvW(GetCommandLineW(), &argc);
 #endif
@@ -20,7 +20,7 @@ std::vector<std::string> parse_command_line_args(int argc, char* argv[]) {
   std::vector<std::string> result;
   result.reserve(argc);
 
-  for (int i = 0; i < argc; i++) {
+  for (int i = argc - 1; i > 0; i--) {
 #ifdef SX_OS_WINDOWS
     result.push_back(to_u8string(w_argv[i]));
 #else
@@ -35,4 +35,4 @@ std::vector<std::string> parse_command_line_args(int argc, char* argv[]) {
   return result;
 }
 
-}  // namespace sx::util
+} // namespace sx::util

@@ -16,6 +16,7 @@ target_sources(sx PRIVATE
     src/Grammar/SimplexParserVisitor.cpp
     src/Util/CommandLineUtil.cpp
     src/Util/StringUtil.cpp
+    src/Util/SimdutfCharStream.cpp
 )
 
 # Configure OS
@@ -41,6 +42,9 @@ add_dependencies(sx generate_grammar)
 # ANTLR4
 add_subdirectory(lib/antlr4-runtime)
 target_link_libraries(sx PRIVATE antlr4-runtime)
+
+# CLI11
+target_include_directories(sx PRIVATE lib/cli11)
 
 # SimdUTF
 add_subdirectory(lib/simdutf)

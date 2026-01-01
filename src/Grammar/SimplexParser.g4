@@ -5,7 +5,7 @@ options {
 }
 
 module
-    : (decl (eos decl)*)?
+    : (decl (eos decl)* eos?)?
     ;
 
 block

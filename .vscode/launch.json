@@ -7,6 +7,7 @@
       "name": "Debug",
       "program": "${workspaceFolder}/build/sx",
       "cwd": "${workspaceFolder}",
+      "args": ["compile", "example/test.sx"],
       "preLaunchTask": "CMake: 生成"
     }
   ]
