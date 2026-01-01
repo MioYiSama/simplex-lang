@@ -10,12 +10,12 @@ set_target_properties(sx PROPERTIES
 
 target_sources(sx PRIVATE
     src/main.cpp
-    src/Util/StringUtil.cpp
+    src/Grammar/SimplexLexer.cpp
+    src/Grammar/SimplexParser.cpp
+    src/Grammar/SimplexParserBaseVisitor.cpp
+    src/Grammar/SimplexParserVisitor.cpp
     src/Util/CommandLineUtil.cpp
-    # src/Grammar/SimplexLexer.cpp
-    # src/Grammar/SimplexParser.cpp
-    # src/Grammar/SimplexBaseVisitor.cpp
-    # src/Grammar/SimplexVisitor.cpp
+    src/Util/StringUtil.cpp
 )
 
 # Configure OS
@@ -29,10 +29,14 @@ else ()
     message(FATAL_ERROR "Unknown OS")
 endif ()
 
+# https://github.com/antlr/antlr4/actions/workflows/hosted.yml
+set(ANTLR4_JAR ${CMAKE_SOURCE_DIR}/lib/antlr4/antlr4-4.13.3-SNAPSHOT-complete.jar)
 add_custom_target(generate_grammar
-    COMMAND java -jar lib/antlr4/antlr4-4.13.2-complete.jar -Dlanguage=Cpp -package sx::grammar -visitor -no-listener src/Grammar/Simplex.g4
-    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+    COMMAND java -jar ${ANTLR4_JAR} -Dlanguage=Cpp -package sx::grammar SimplexLexer.g4
+    COMMAND java -jar ${ANTLR4_JAR} -Dlanguage=Cpp -package sx::grammar -visitor -no-listener SimplexParser.g4
+    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/src/Grammar
 )
+add_dependencies(sx generate_grammar)
 
 # ANTLR4
 add_subdirectory(lib/antlr4-runtime)

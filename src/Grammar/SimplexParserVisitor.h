@@ -1,5 +1,5 @@
 
-// Generated from src/Grammar/Simplex.g4 by ANTLR 4.13.2
+// Generated from SimplexParser.g4 by ANTLR 4.13.2
 
 #pragma once
 
@@ -14,7 +14,7 @@ namespace sx::grammar {
  * This class defines an abstract visitor for a parse tree
  * produced by SimplexParser.
  */
-class  SimplexVisitor : public antlr4::tree::AbstractParseTreeVisitor {
+class  SimplexParserVisitor : public antlr4::tree::AbstractParseTreeVisitor {
 public:
 
   /**
@@ -22,9 +22,21 @@ public:
    */
     virtual std::any visitModule(SimplexParser::ModuleContext *context) = 0;
 
+    virtual std::any visitBlock(SimplexParser::BlockContext *context) = 0;
+
     virtual std::any visitStatements(SimplexParser::StatementsContext *context) = 0;
 
     virtual std::any visitStatement(SimplexParser::StatementContext *context) = 0;
+
+    virtual std::any visitIf_statement(SimplexParser::If_statementContext *context) = 0;
+
+    virtual std::any visitLoop(SimplexParser::LoopContext *context) = 0;
+
+    virtual std::any visitConditional_loop(SimplexParser::Conditional_loopContext *context) = 0;
+
+    virtual std::any visitFor_each(SimplexParser::For_eachContext *context) = 0;
+
+    virtual std::any visitEos(SimplexParser::EosContext *context) = 0;
 
     virtual std::any visitDecl(SimplexParser::DeclContext *context) = 0;
 

@@ -1,8 +1,8 @@
 
-// Generated from src/Grammar/Simplex.g4 by ANTLR 4.13.2
+// Generated from SimplexParser.g4 by ANTLR 4.13.2
 
 
-#include "SimplexVisitor.h"
+#include "SimplexParserVisitor.h"
 
 #include "SimplexParser.h"
 
@@ -37,139 +37,158 @@ struct SimplexParserStaticData final {
   std::unique_ptr<antlr4::atn::ATN> atn;
 };
 
-::antlr4::internal::OnceFlag simplexParserOnceFlag;
+::antlr4::internal::OnceFlag simplexparserParserOnceFlag;
 #if ANTLR4_USE_THREAD_LOCAL_CACHE
 static thread_local
 #endif
-std::unique_ptr<SimplexParserStaticData> simplexParserStaticData = nullptr;
+std::unique_ptr<SimplexParserStaticData> simplexparserParserStaticData = nullptr;
 
-void simplexParserInitialize() {
+void simplexparserParserInitialize() {
 #if ANTLR4_USE_THREAD_LOCAL_CACHE
-  if (simplexParserStaticData != nullptr) {
+  if (simplexparserParserStaticData != nullptr) {
     return;
   }
 #else
-  assert(simplexParserStaticData == nullptr);
+  assert(simplexparserParserStaticData == nullptr);
 #endif
   auto staticData = std::make_unique<SimplexParserStaticData>(
     std::vector<std::string>{
-      "module", "statements", "statement", "decl", "expr", "expr_void", 
-      "expr_tuple", "expr_struct", "expr_array", "expr_map", "expr_func", 
-      "type_expr", "type_void", "type_tuple", "type_struct", "type_array", 
-      "type_map", "type_func"
+      "module", "block", "statements", "statement", "if_statement", "for_statement", 
+      "eos", "decl", "expr", "expr_void", "expr_tuple", "expr_struct", "expr_array", 
+      "expr_map", "expr_func", "type_expr", "type_void", "type_tuple", "type_struct", 
+      "type_array", "type_map", "type_func"
     },
     std::vector<std::string>{
-      "", "'('", "')'", "'['", "']'", "'{'", "'}'", "':'", "','", "'='", 
-      "'=>'", "'+'", "'-'", "'*'", "'/'", "'var'", "'const'", "'def'", "'type'"
+      "", "'+'", "'-'", "'*'", "'/'", "','", "';'", "':'", "'='", "'=>'", 
+      "'('", "')'", "'['", "']'", "'{'", "'}'", "'var'", "'const'", "'def'", 
+      "'type'", "'if'", "'else'", "'for'", "'in'", "'continue'", "'break'", 
+      "'return'"
     },
     std::vector<std::string>{
-      "", "L_PAREN", "R_PAREN", "L_BRACKET", "R_BRACKET", "L_BRACE", "R_BRACE", 
-      "COLON", "COMMA", "ASSIGN", "ARROW", "ADD", "SUB", "MUL", "DIV", "VAR", 
-      "CONST", "DEF", "TYPE", "ID", "INTEGER", "NEWLINE", "WHITESPACE"
+      "", "ADD", "SUB", "MUL", "DIV", "COMMA", "SEMI", "COLON", "ASSIGN", 
+      "ARROW", "L_PAREN", "R_PAREN", "L_BRACKET", "R_BRACKET", "L_BRACE", 
+      "R_BRACE", "VAR", "CONST", "DEF", "TYPE", "IF", "ELSE", "FOR", "IN", 
+      "CONTINUE", "BREAK", "RETURN", "ID", "INTEGER", "FLOAT", "CHAR", "STRING", 
+      "NEWLINE", "WHITESPACE", "LINE_COMMENT", "BLOCK_COMMENT", "WS_NLSEMI", 
+      "COMMENT_NLSEMI", "LINE_COMMENT_NLSEMI", "EOS", "OTHER"
     }
   );
   static const int32_t serializedATNSegment[] = {
-  	4,1,22,304,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,6,2,
+  	4,1,40,346,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,6,2,
   	7,7,7,2,8,7,8,2,9,7,9,2,10,7,10,2,11,7,11,2,12,7,12,2,13,7,13,2,14,7,
-  	14,2,15,7,15,2,16,7,16,2,17,7,17,1,0,3,0,38,8,0,1,0,3,0,41,8,0,1,0,1,
-  	0,1,0,5,0,46,8,0,10,0,12,0,49,9,0,1,0,3,0,52,8,0,3,0,54,8,0,1,1,3,1,57,
-  	8,1,1,1,3,1,60,8,1,1,1,1,1,1,1,5,1,65,8,1,10,1,12,1,68,9,1,1,1,3,1,71,
-  	8,1,3,1,73,8,1,1,2,1,2,1,3,1,3,1,3,1,3,3,3,81,8,3,1,3,1,3,1,3,1,4,1,4,
-  	1,4,1,4,1,4,1,4,1,4,1,4,1,4,1,4,5,4,96,8,4,10,4,12,4,99,9,4,1,4,3,4,102,
-  	8,4,3,4,104,8,4,1,4,1,4,1,4,1,4,1,4,1,4,1,4,1,4,1,4,1,4,1,4,1,4,1,4,3,
-  	4,119,8,4,1,4,1,4,1,4,1,4,1,4,1,4,5,4,127,8,4,10,4,12,4,130,9,4,1,5,1,
-  	5,1,5,1,6,1,6,1,6,1,6,5,6,139,8,6,10,6,12,6,142,9,6,1,6,3,6,145,8,6,1,
-  	6,1,6,1,7,1,7,1,7,1,7,1,7,1,7,1,7,1,7,5,7,157,8,7,10,7,12,7,160,9,7,1,
-  	7,3,7,163,8,7,1,7,1,7,1,8,1,8,1,8,1,8,5,8,171,8,8,10,8,12,8,174,9,8,1,
-  	8,3,8,177,8,8,1,8,1,8,1,9,1,9,1,9,1,9,1,9,1,9,1,9,1,9,1,9,5,9,190,8,9,
-  	10,9,12,9,193,9,9,1,9,3,9,196,8,9,1,9,1,9,1,10,1,10,1,10,1,10,1,10,1,
-  	10,1,10,1,10,1,10,1,10,1,10,1,10,1,10,1,10,1,10,5,10,215,8,10,10,10,12,
-  	10,218,9,10,1,10,3,10,221,8,10,1,10,1,10,1,10,1,10,1,10,3,10,228,8,10,
-  	1,11,1,11,1,11,1,11,1,11,1,11,1,11,3,11,237,8,11,1,12,1,12,1,12,1,13,
-  	1,13,1,13,1,13,5,13,246,8,13,10,13,12,13,249,9,13,1,13,3,13,252,8,13,
-  	1,13,1,13,1,14,1,14,1,14,1,14,1,14,1,14,1,14,1,14,5,14,264,8,14,10,14,
-  	12,14,267,9,14,1,14,3,14,270,8,14,1,14,1,14,1,15,1,15,1,15,1,15,1,16,
-  	1,16,1,16,1,16,1,16,1,16,1,17,1,17,1,17,1,17,1,17,1,17,1,17,1,17,5,17,
-  	292,8,17,10,17,12,17,295,9,17,1,17,3,17,298,8,17,1,17,1,17,1,17,1,17,
-  	1,17,0,1,8,18,0,2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,0,3,1,
-  	0,15,17,1,0,11,12,1,0,13,14,335,0,53,1,0,0,0,2,72,1,0,0,0,4,74,1,0,0,
-  	0,6,76,1,0,0,0,8,118,1,0,0,0,10,131,1,0,0,0,12,134,1,0,0,0,14,148,1,0,
-  	0,0,16,166,1,0,0,0,18,180,1,0,0,0,20,227,1,0,0,0,22,236,1,0,0,0,24,238,
-  	1,0,0,0,26,241,1,0,0,0,28,255,1,0,0,0,30,273,1,0,0,0,32,277,1,0,0,0,34,
-  	283,1,0,0,0,36,38,5,21,0,0,37,36,1,0,0,0,37,38,1,0,0,0,38,54,1,0,0,0,
-  	39,41,5,21,0,0,40,39,1,0,0,0,40,41,1,0,0,0,41,42,1,0,0,0,42,47,3,6,3,
-  	0,43,44,5,21,0,0,44,46,3,6,3,0,45,43,1,0,0,0,46,49,1,0,0,0,47,45,1,0,
-  	0,0,47,48,1,0,0,0,48,51,1,0,0,0,49,47,1,0,0,0,50,52,5,21,0,0,51,50,1,
-  	0,0,0,51,52,1,0,0,0,52,54,1,0,0,0,53,37,1,0,0,0,53,40,1,0,0,0,54,1,1,
-  	0,0,0,55,57,5,21,0,0,56,55,1,0,0,0,56,57,1,0,0,0,57,73,1,0,0,0,58,60,
-  	5,21,0,0,59,58,1,0,0,0,59,60,1,0,0,0,60,61,1,0,0,0,61,66,3,4,2,0,62,63,
-  	5,21,0,0,63,65,3,4,2,0,64,62,1,0,0,0,65,68,1,0,0,0,66,64,1,0,0,0,66,67,
-  	1,0,0,0,67,70,1,0,0,0,68,66,1,0,0,0,69,71,5,21,0,0,70,69,1,0,0,0,70,71,
-  	1,0,0,0,71,73,1,0,0,0,72,56,1,0,0,0,72,59,1,0,0,0,73,3,1,0,0,0,74,75,
-  	3,6,3,0,75,5,1,0,0,0,76,77,7,0,0,0,77,80,5,19,0,0,78,79,5,7,0,0,79,81,
-  	3,22,11,0,80,78,1,0,0,0,80,81,1,0,0,0,81,82,1,0,0,0,82,83,5,9,0,0,83,
-  	84,3,8,4,0,84,7,1,0,0,0,85,86,6,4,-1,0,86,87,5,1,0,0,87,88,3,8,4,0,88,
-  	89,5,2,0,0,89,119,1,0,0,0,90,91,5,19,0,0,91,103,5,1,0,0,92,97,3,8,4,0,
-  	93,94,5,8,0,0,94,96,3,8,4,0,95,93,1,0,0,0,96,99,1,0,0,0,97,95,1,0,0,0,
-  	97,98,1,0,0,0,98,101,1,0,0,0,99,97,1,0,0,0,100,102,5,8,0,0,101,100,1,
-  	0,0,0,101,102,1,0,0,0,102,104,1,0,0,0,103,92,1,0,0,0,103,104,1,0,0,0,
-  	104,105,1,0,0,0,105,119,5,2,0,0,106,107,7,1,0,0,107,119,3,8,4,12,108,
-  	119,5,19,0,0,109,119,5,20,0,0,110,111,5,18,0,0,111,119,3,22,11,0,112,
-  	119,3,10,5,0,113,119,3,12,6,0,114,119,3,14,7,0,115,119,3,16,8,0,116,119,
-  	3,18,9,0,117,119,3,20,10,0,118,85,1,0,0,0,118,90,1,0,0,0,118,106,1,0,
-  	0,0,118,108,1,0,0,0,118,109,1,0,0,0,118,110,1,0,0,0,118,112,1,0,0,0,118,
-  	113,1,0,0,0,118,114,1,0,0,0,118,115,1,0,0,0,118,116,1,0,0,0,118,117,1,
-  	0,0,0,119,128,1,0,0,0,120,121,10,11,0,0,121,122,7,2,0,0,122,127,3,8,4,
-  	12,123,124,10,10,0,0,124,125,7,1,0,0,125,127,3,8,4,11,126,120,1,0,0,0,
-  	126,123,1,0,0,0,127,130,1,0,0,0,128,126,1,0,0,0,128,129,1,0,0,0,129,9,
-  	1,0,0,0,130,128,1,0,0,0,131,132,5,1,0,0,132,133,5,2,0,0,133,11,1,0,0,
-  	0,134,135,5,1,0,0,135,140,3,8,4,0,136,137,5,8,0,0,137,139,3,8,4,0,138,
-  	136,1,0,0,0,139,142,1,0,0,0,140,138,1,0,0,0,140,141,1,0,0,0,141,144,1,
-  	0,0,0,142,140,1,0,0,0,143,145,5,8,0,0,144,143,1,0,0,0,144,145,1,0,0,0,
-  	145,146,1,0,0,0,146,147,5,2,0,0,147,13,1,0,0,0,148,149,5,1,0,0,149,150,
-  	5,19,0,0,150,151,5,7,0,0,151,158,3,8,4,0,152,153,5,8,0,0,153,154,5,19,
-  	0,0,154,155,5,7,0,0,155,157,3,8,4,0,156,152,1,0,0,0,157,160,1,0,0,0,158,
-  	156,1,0,0,0,158,159,1,0,0,0,159,162,1,0,0,0,160,158,1,0,0,0,161,163,5,
-  	8,0,0,162,161,1,0,0,0,162,163,1,0,0,0,163,164,1,0,0,0,164,165,5,2,0,0,
-  	165,15,1,0,0,0,166,167,5,3,0,0,167,172,3,8,4,0,168,169,5,8,0,0,169,171,
-  	3,8,4,0,170,168,1,0,0,0,171,174,1,0,0,0,172,170,1,0,0,0,172,173,1,0,0,
-  	0,173,176,1,0,0,0,174,172,1,0,0,0,175,177,5,8,0,0,176,175,1,0,0,0,176,
-  	177,1,0,0,0,177,178,1,0,0,0,178,179,5,4,0,0,179,17,1,0,0,0,180,181,5,
-  	3,0,0,181,182,3,8,4,0,182,183,5,7,0,0,183,191,3,8,4,0,184,185,5,8,0,0,
-  	185,186,3,8,4,0,186,187,5,7,0,0,187,188,3,8,4,0,188,190,1,0,0,0,189,184,
-  	1,0,0,0,190,193,1,0,0,0,191,189,1,0,0,0,191,192,1,0,0,0,192,195,1,0,0,
-  	0,193,191,1,0,0,0,194,196,5,8,0,0,195,194,1,0,0,0,195,196,1,0,0,0,196,
-  	197,1,0,0,0,197,198,5,4,0,0,198,19,1,0,0,0,199,200,5,5,0,0,200,201,3,
-  	34,17,0,201,202,5,21,0,0,202,203,3,2,1,0,203,204,5,6,0,0,204,228,1,0,
-  	0,0,205,206,5,5,0,0,206,207,5,1,0,0,207,208,5,19,0,0,208,209,5,7,0,0,
-  	209,216,3,22,11,0,210,211,5,8,0,0,211,212,5,19,0,0,212,213,5,7,0,0,213,
-  	215,3,22,11,0,214,210,1,0,0,0,215,218,1,0,0,0,216,214,1,0,0,0,216,217,
-  	1,0,0,0,217,220,1,0,0,0,218,216,1,0,0,0,219,221,5,8,0,0,220,219,1,0,0,
-  	0,220,221,1,0,0,0,221,222,1,0,0,0,222,223,5,2,0,0,223,224,5,10,0,0,224,
-  	225,3,8,4,0,225,226,5,6,0,0,226,228,1,0,0,0,227,199,1,0,0,0,227,205,1,
-  	0,0,0,228,21,1,0,0,0,229,237,5,19,0,0,230,237,3,24,12,0,231,237,3,26,
-  	13,0,232,237,3,28,14,0,233,237,3,30,15,0,234,237,3,32,16,0,235,237,3,
-  	34,17,0,236,229,1,0,0,0,236,230,1,0,0,0,236,231,1,0,0,0,236,232,1,0,0,
-  	0,236,233,1,0,0,0,236,234,1,0,0,0,236,235,1,0,0,0,237,23,1,0,0,0,238,
-  	239,5,1,0,0,239,240,5,2,0,0,240,25,1,0,0,0,241,242,5,1,0,0,242,247,3,
-  	22,11,0,243,244,5,8,0,0,244,246,3,22,11,0,245,243,1,0,0,0,246,249,1,0,
-  	0,0,247,245,1,0,0,0,247,248,1,0,0,0,248,251,1,0,0,0,249,247,1,0,0,0,250,
-  	252,5,8,0,0,251,250,1,0,0,0,251,252,1,0,0,0,252,253,1,0,0,0,253,254,5,
-  	2,0,0,254,27,1,0,0,0,255,256,5,1,0,0,256,257,5,19,0,0,257,258,5,7,0,0,
-  	258,265,3,22,11,0,259,260,5,8,0,0,260,261,5,19,0,0,261,262,5,7,0,0,262,
-  	264,3,22,11,0,263,259,1,0,0,0,264,267,1,0,0,0,265,263,1,0,0,0,265,266,
-  	1,0,0,0,266,269,1,0,0,0,267,265,1,0,0,0,268,270,5,8,0,0,269,268,1,0,0,
-  	0,269,270,1,0,0,0,270,271,1,0,0,0,271,272,5,2,0,0,272,29,1,0,0,0,273,
-  	274,5,3,0,0,274,275,3,22,11,0,275,276,5,4,0,0,276,31,1,0,0,0,277,278,
-  	5,3,0,0,278,279,3,22,11,0,279,280,5,7,0,0,280,281,3,22,11,0,281,282,5,
-  	4,0,0,282,33,1,0,0,0,283,284,5,1,0,0,284,285,5,19,0,0,285,286,5,7,0,0,
-  	286,293,3,22,11,0,287,288,5,8,0,0,288,289,5,19,0,0,289,290,5,7,0,0,290,
-  	292,3,22,11,0,291,287,1,0,0,0,292,295,1,0,0,0,293,291,1,0,0,0,293,294,
-  	1,0,0,0,294,297,1,0,0,0,295,293,1,0,0,0,296,298,5,8,0,0,297,296,1,0,0,
-  	0,297,298,1,0,0,0,298,299,1,0,0,0,299,300,5,2,0,0,300,301,5,10,0,0,301,
-  	302,3,22,11,0,302,35,1,0,0,0,35,37,40,47,51,53,56,59,66,70,72,80,97,101,
-  	103,118,126,128,140,144,158,162,172,176,191,195,216,220,227,236,247,251,
-  	265,269,293,297
+  	14,2,15,7,15,2,16,7,16,2,17,7,17,2,18,7,18,2,19,7,19,2,20,7,20,2,21,7,
+  	21,1,0,1,0,1,0,1,0,5,0,49,8,0,10,0,12,0,52,9,0,3,0,54,8,0,1,1,1,1,3,1,
+  	58,8,1,1,1,1,1,1,2,1,2,1,2,4,2,65,8,2,11,2,12,2,66,1,3,1,3,1,3,3,3,72,
+  	8,3,1,3,1,3,1,3,1,3,3,3,78,8,3,1,4,1,4,1,4,1,4,1,4,1,4,1,4,1,4,5,4,88,
+  	8,4,10,4,12,4,91,9,4,1,4,1,4,3,4,95,8,4,1,5,1,5,1,5,1,5,1,5,1,5,1,5,1,
+  	5,1,5,1,5,1,5,1,5,1,5,1,5,1,5,1,5,1,5,1,5,1,5,3,5,116,8,5,1,6,1,6,1,7,
+  	1,7,1,7,1,7,3,7,124,8,7,1,7,1,7,1,7,1,8,1,8,1,8,1,8,1,8,1,8,1,8,1,8,1,
+  	8,1,8,5,8,139,8,8,10,8,12,8,142,9,8,1,8,3,8,145,8,8,3,8,147,8,8,1,8,1,
+  	8,1,8,1,8,1,8,1,8,1,8,1,8,1,8,1,8,1,8,1,8,1,8,3,8,162,8,8,1,8,1,8,1,8,
+  	1,8,1,8,1,8,5,8,170,8,8,10,8,12,8,173,9,8,1,9,1,9,1,9,1,10,1,10,1,10,
+  	1,10,5,10,182,8,10,10,10,12,10,185,9,10,1,10,3,10,188,8,10,1,10,1,10,
+  	1,11,1,11,1,11,1,11,1,11,1,11,1,11,1,11,5,11,200,8,11,10,11,12,11,203,
+  	9,11,1,11,3,11,206,8,11,1,11,1,11,1,12,1,12,1,12,1,12,5,12,214,8,12,10,
+  	12,12,12,217,9,12,1,12,3,12,220,8,12,1,12,1,12,1,13,1,13,1,13,1,13,1,
+  	13,1,13,1,13,1,13,1,13,5,13,233,8,13,10,13,12,13,236,9,13,1,13,3,13,239,
+  	8,13,1,13,1,13,1,14,1,14,1,14,1,14,1,14,1,14,1,14,1,14,1,14,1,14,1,14,
+  	1,14,1,14,1,14,5,14,257,8,14,10,14,12,14,260,9,14,1,14,3,14,263,8,14,
+  	1,14,1,14,1,14,1,14,1,14,3,14,270,8,14,1,15,1,15,1,15,1,15,1,15,1,15,
+  	1,15,3,15,279,8,15,1,16,1,16,1,16,1,17,1,17,1,17,1,17,5,17,288,8,17,10,
+  	17,12,17,291,9,17,1,17,3,17,294,8,17,1,17,1,17,1,18,1,18,1,18,1,18,1,
+  	18,1,18,1,18,1,18,5,18,306,8,18,10,18,12,18,309,9,18,1,18,3,18,312,8,
+  	18,1,18,1,18,1,19,1,19,1,19,1,19,1,20,1,20,1,20,1,20,1,20,1,20,1,21,1,
+  	21,1,21,1,21,1,21,1,21,1,21,1,21,5,21,334,8,21,10,21,12,21,337,9,21,1,
+  	21,3,21,340,8,21,1,21,1,21,1,21,1,21,1,21,0,1,16,22,0,2,4,6,8,10,12,14,
+  	16,18,20,22,24,26,28,30,32,34,36,38,40,42,0,4,2,0,6,6,39,39,1,0,16,18,
+  	1,0,1,2,1,0,3,4,377,0,53,1,0,0,0,2,55,1,0,0,0,4,64,1,0,0,0,6,77,1,0,0,
+  	0,8,79,1,0,0,0,10,115,1,0,0,0,12,117,1,0,0,0,14,119,1,0,0,0,16,161,1,
+  	0,0,0,18,174,1,0,0,0,20,177,1,0,0,0,22,191,1,0,0,0,24,209,1,0,0,0,26,
+  	223,1,0,0,0,28,269,1,0,0,0,30,278,1,0,0,0,32,280,1,0,0,0,34,283,1,0,0,
+  	0,36,297,1,0,0,0,38,315,1,0,0,0,40,319,1,0,0,0,42,325,1,0,0,0,44,50,3,
+  	14,7,0,45,46,3,12,6,0,46,47,3,14,7,0,47,49,1,0,0,0,48,45,1,0,0,0,49,52,
+  	1,0,0,0,50,48,1,0,0,0,50,51,1,0,0,0,51,54,1,0,0,0,52,50,1,0,0,0,53,44,
+  	1,0,0,0,53,54,1,0,0,0,54,1,1,0,0,0,55,57,5,14,0,0,56,58,3,4,2,0,57,56,
+  	1,0,0,0,57,58,1,0,0,0,58,59,1,0,0,0,59,60,5,15,0,0,60,3,1,0,0,0,61,62,
+  	3,6,3,0,62,63,3,12,6,0,63,65,1,0,0,0,64,61,1,0,0,0,65,66,1,0,0,0,66,64,
+  	1,0,0,0,66,67,1,0,0,0,67,5,1,0,0,0,68,78,3,14,7,0,69,71,5,26,0,0,70,72,
+  	3,16,8,0,71,70,1,0,0,0,71,72,1,0,0,0,72,78,1,0,0,0,73,78,5,24,0,0,74,
+  	78,5,25,0,0,75,78,3,8,4,0,76,78,3,10,5,0,77,68,1,0,0,0,77,69,1,0,0,0,
+  	77,73,1,0,0,0,77,74,1,0,0,0,77,75,1,0,0,0,77,76,1,0,0,0,78,7,1,0,0,0,
+  	79,80,5,20,0,0,80,81,3,16,8,0,81,89,3,2,1,0,82,83,5,21,0,0,83,84,5,20,
+  	0,0,84,85,3,16,8,0,85,86,3,2,1,0,86,88,1,0,0,0,87,82,1,0,0,0,88,91,1,
+  	0,0,0,89,87,1,0,0,0,89,90,1,0,0,0,90,94,1,0,0,0,91,89,1,0,0,0,92,93,5,
+  	21,0,0,93,95,3,2,1,0,94,92,1,0,0,0,94,95,1,0,0,0,95,9,1,0,0,0,96,97,5,
+  	22,0,0,97,98,5,14,0,0,98,99,3,4,2,0,99,100,5,15,0,0,100,116,1,0,0,0,101,
+  	102,5,22,0,0,102,103,3,16,8,0,103,104,5,14,0,0,104,105,3,4,2,0,105,106,
+  	5,15,0,0,106,116,1,0,0,0,107,108,5,22,0,0,108,109,5,27,0,0,109,110,5,
+  	23,0,0,110,111,3,16,8,0,111,112,5,14,0,0,112,113,3,4,2,0,113,114,5,15,
+  	0,0,114,116,1,0,0,0,115,96,1,0,0,0,115,101,1,0,0,0,115,107,1,0,0,0,116,
+  	11,1,0,0,0,117,118,7,0,0,0,118,13,1,0,0,0,119,120,7,1,0,0,120,123,5,27,
+  	0,0,121,122,5,7,0,0,122,124,3,30,15,0,123,121,1,0,0,0,123,124,1,0,0,0,
+  	124,125,1,0,0,0,125,126,5,8,0,0,126,127,3,16,8,0,127,15,1,0,0,0,128,129,
+  	6,8,-1,0,129,130,5,10,0,0,130,131,3,16,8,0,131,132,5,11,0,0,132,162,1,
+  	0,0,0,133,134,5,27,0,0,134,146,5,10,0,0,135,140,3,16,8,0,136,137,5,5,
+  	0,0,137,139,3,16,8,0,138,136,1,0,0,0,139,142,1,0,0,0,140,138,1,0,0,0,
+  	140,141,1,0,0,0,141,144,1,0,0,0,142,140,1,0,0,0,143,145,5,5,0,0,144,143,
+  	1,0,0,0,144,145,1,0,0,0,145,147,1,0,0,0,146,135,1,0,0,0,146,147,1,0,0,
+  	0,147,148,1,0,0,0,148,162,5,11,0,0,149,150,7,2,0,0,150,162,3,16,8,12,
+  	151,162,5,27,0,0,152,162,5,28,0,0,153,154,5,19,0,0,154,162,3,30,15,0,
+  	155,162,3,18,9,0,156,162,3,20,10,0,157,162,3,22,11,0,158,162,3,24,12,
+  	0,159,162,3,26,13,0,160,162,3,28,14,0,161,128,1,0,0,0,161,133,1,0,0,0,
+  	161,149,1,0,0,0,161,151,1,0,0,0,161,152,1,0,0,0,161,153,1,0,0,0,161,155,
+  	1,0,0,0,161,156,1,0,0,0,161,157,1,0,0,0,161,158,1,0,0,0,161,159,1,0,0,
+  	0,161,160,1,0,0,0,162,171,1,0,0,0,163,164,10,11,0,0,164,165,7,3,0,0,165,
+  	170,3,16,8,12,166,167,10,10,0,0,167,168,7,2,0,0,168,170,3,16,8,11,169,
+  	163,1,0,0,0,169,166,1,0,0,0,170,173,1,0,0,0,171,169,1,0,0,0,171,172,1,
+  	0,0,0,172,17,1,0,0,0,173,171,1,0,0,0,174,175,5,10,0,0,175,176,5,11,0,
+  	0,176,19,1,0,0,0,177,178,5,10,0,0,178,183,3,16,8,0,179,180,5,5,0,0,180,
+  	182,3,16,8,0,181,179,1,0,0,0,182,185,1,0,0,0,183,181,1,0,0,0,183,184,
+  	1,0,0,0,184,187,1,0,0,0,185,183,1,0,0,0,186,188,5,5,0,0,187,186,1,0,0,
+  	0,187,188,1,0,0,0,188,189,1,0,0,0,189,190,5,11,0,0,190,21,1,0,0,0,191,
+  	192,5,10,0,0,192,193,5,27,0,0,193,194,5,7,0,0,194,201,3,16,8,0,195,196,
+  	5,5,0,0,196,197,5,27,0,0,197,198,5,7,0,0,198,200,3,16,8,0,199,195,1,0,
+  	0,0,200,203,1,0,0,0,201,199,1,0,0,0,201,202,1,0,0,0,202,205,1,0,0,0,203,
+  	201,1,0,0,0,204,206,5,5,0,0,205,204,1,0,0,0,205,206,1,0,0,0,206,207,1,
+  	0,0,0,207,208,5,11,0,0,208,23,1,0,0,0,209,210,5,12,0,0,210,215,3,16,8,
+  	0,211,212,5,5,0,0,212,214,3,16,8,0,213,211,1,0,0,0,214,217,1,0,0,0,215,
+  	213,1,0,0,0,215,216,1,0,0,0,216,219,1,0,0,0,217,215,1,0,0,0,218,220,5,
+  	5,0,0,219,218,1,0,0,0,219,220,1,0,0,0,220,221,1,0,0,0,221,222,5,13,0,
+  	0,222,25,1,0,0,0,223,224,5,12,0,0,224,225,3,16,8,0,225,226,5,7,0,0,226,
+  	234,3,16,8,0,227,228,5,5,0,0,228,229,3,16,8,0,229,230,5,7,0,0,230,231,
+  	3,16,8,0,231,233,1,0,0,0,232,227,1,0,0,0,233,236,1,0,0,0,234,232,1,0,
+  	0,0,234,235,1,0,0,0,235,238,1,0,0,0,236,234,1,0,0,0,237,239,5,5,0,0,238,
+  	237,1,0,0,0,238,239,1,0,0,0,239,240,1,0,0,0,240,241,5,13,0,0,241,27,1,
+  	0,0,0,242,243,5,14,0,0,243,244,3,42,21,0,244,245,3,4,2,0,245,246,5,15,
+  	0,0,246,270,1,0,0,0,247,248,5,14,0,0,248,249,5,10,0,0,249,250,5,27,0,
+  	0,250,251,5,7,0,0,251,258,3,30,15,0,252,253,5,5,0,0,253,254,5,27,0,0,
+  	254,255,5,7,0,0,255,257,3,30,15,0,256,252,1,0,0,0,257,260,1,0,0,0,258,
+  	256,1,0,0,0,258,259,1,0,0,0,259,262,1,0,0,0,260,258,1,0,0,0,261,263,5,
+  	5,0,0,262,261,1,0,0,0,262,263,1,0,0,0,263,264,1,0,0,0,264,265,5,11,0,
+  	0,265,266,5,9,0,0,266,267,3,16,8,0,267,268,5,15,0,0,268,270,1,0,0,0,269,
+  	242,1,0,0,0,269,247,1,0,0,0,270,29,1,0,0,0,271,279,5,27,0,0,272,279,3,
+  	32,16,0,273,279,3,34,17,0,274,279,3,36,18,0,275,279,3,38,19,0,276,279,
+  	3,40,20,0,277,279,3,42,21,0,278,271,1,0,0,0,278,272,1,0,0,0,278,273,1,
+  	0,0,0,278,274,1,0,0,0,278,275,1,0,0,0,278,276,1,0,0,0,278,277,1,0,0,0,
+  	279,31,1,0,0,0,280,281,5,10,0,0,281,282,5,11,0,0,282,33,1,0,0,0,283,284,
+  	5,10,0,0,284,289,3,30,15,0,285,286,5,5,0,0,286,288,3,30,15,0,287,285,
+  	1,0,0,0,288,291,1,0,0,0,289,287,1,0,0,0,289,290,1,0,0,0,290,293,1,0,0,
+  	0,291,289,1,0,0,0,292,294,5,5,0,0,293,292,1,0,0,0,293,294,1,0,0,0,294,
+  	295,1,0,0,0,295,296,5,11,0,0,296,35,1,0,0,0,297,298,5,10,0,0,298,299,
+  	5,27,0,0,299,300,5,7,0,0,300,307,3,30,15,0,301,302,5,5,0,0,302,303,5,
+  	27,0,0,303,304,5,7,0,0,304,306,3,30,15,0,305,301,1,0,0,0,306,309,1,0,
+  	0,0,307,305,1,0,0,0,307,308,1,0,0,0,308,311,1,0,0,0,309,307,1,0,0,0,310,
+  	312,5,5,0,0,311,310,1,0,0,0,311,312,1,0,0,0,312,313,1,0,0,0,313,314,5,
+  	11,0,0,314,37,1,0,0,0,315,316,5,12,0,0,316,317,3,30,15,0,317,318,5,13,
+  	0,0,318,39,1,0,0,0,319,320,5,12,0,0,320,321,3,30,15,0,321,322,5,7,0,0,
+  	322,323,3,30,15,0,323,324,5,13,0,0,324,41,1,0,0,0,325,326,5,10,0,0,326,
+  	327,5,27,0,0,327,328,5,7,0,0,328,335,3,30,15,0,329,330,5,5,0,0,330,331,
+  	5,27,0,0,331,332,5,7,0,0,332,334,3,30,15,0,333,329,1,0,0,0,334,337,1,
+  	0,0,0,335,333,1,0,0,0,335,336,1,0,0,0,336,339,1,0,0,0,337,335,1,0,0,0,
+  	338,340,5,5,0,0,339,338,1,0,0,0,339,340,1,0,0,0,340,341,1,0,0,0,341,342,
+  	5,11,0,0,342,343,5,9,0,0,343,344,3,30,15,0,344,43,1,0,0,0,34,50,53,57,
+  	66,71,77,89,94,115,123,140,144,146,161,169,171,183,187,201,205,215,219,
+  	234,238,258,262,269,278,289,293,307,311,335,339
   };
   staticData->serializedATN = antlr4::atn::SerializedATNView(serializedATNSegment, sizeof(serializedATNSegment) / sizeof(serializedATNSegment[0]));
 
@@ -181,7 +200,7 @@ void simplexParserInitialize() {
   for (size_t i = 0; i < count; i++) { 
     staticData->decisionToDFA.emplace_back(staticData->atn->getDecisionState(i), i);
   }
-  simplexParserStaticData = std::move(staticData);
+  simplexparserParserStaticData = std::move(staticData);
 }
 
 }
@@ -190,7 +209,7 @@ SimplexParser::SimplexParser(TokenStream *input) : SimplexParser(input, antlr4::
 
 SimplexParser::SimplexParser(TokenStream *input, const antlr4::atn::ParserATNSimulatorOptions &options) : Parser(input) {
   SimplexParser::initialize();
-  _interpreter = new atn::ParserATNSimulator(this, *simplexParserStaticData->atn, simplexParserStaticData->decisionToDFA, simplexParserStaticData->sharedContextCache, options);
+  _interpreter = new atn::ParserATNSimulator(this, *simplexparserParserStaticData->atn, simplexparserParserStaticData->decisionToDFA, simplexparserParserStaticData->sharedContextCache, options);
 }
 
 SimplexParser::~SimplexParser() {
@@ -198,23 +217,23 @@ SimplexParser::~SimplexParser() {
 }
 
 const atn::ATN& SimplexParser::getATN() const {
-  return *simplexParserStaticData->atn;
+  return *simplexparserParserStaticData->atn;
 }
 
 std::string SimplexParser::getGrammarFileName() const {
-  return "Simplex.g4";
+  return "SimplexParser.g4";
 }
 
 const std::vector<std::string>& SimplexParser::getRuleNames() const {
-  return simplexParserStaticData->ruleNames;
+  return simplexparserParserStaticData->ruleNames;
 }
 
 const dfa::Vocabulary& SimplexParser::getVocabulary() const {
-  return simplexParserStaticData->vocabulary;
+  return simplexparserParserStaticData->vocabulary;
 }
 
 antlr4::atn::SerializedATNView SimplexParser::getSerializedATN() const {
-  return simplexParserStaticData->serializedATN;
+  return simplexparserParserStaticData->serializedATN;
 }
 
 
@@ -222,14 +241,6 @@ antlr4::atn::SerializedATNView SimplexParser::getSerializedATN() const {
 
 SimplexParser::ModuleContext::ModuleContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
-}
-
-std::vector<tree::TerminalNode *> SimplexParser::ModuleContext::NEWLINE() {
-  return getTokens(SimplexParser::NEWLINE);
-}
-
-tree::TerminalNode* SimplexParser::ModuleContext::NEWLINE(size_t i) {
-  return getToken(SimplexParser::NEWLINE, i);
 }
 
 std::vector<SimplexParser::DeclContext *> SimplexParser::ModuleContext::decl() {
@@ -240,6 +251,14 @@ SimplexParser::DeclContext* SimplexParser::ModuleContext::decl(size_t i) {
   return getRuleContext<SimplexParser::DeclContext>(i);
 }
 
+std::vector<SimplexParser::EosContext *> SimplexParser::ModuleContext::eos() {
+  return getRuleContexts<SimplexParser::EosContext>();
+}
+
+SimplexParser::EosContext* SimplexParser::ModuleContext::eos(size_t i) {
+  return getRuleContext<SimplexParser::EosContext>(i);
+}
+
 
 size_t SimplexParser::ModuleContext::getRuleIndex() const {
   return SimplexParser::RuleModule;
@@ -247,7 +266,7 @@ size_t SimplexParser::ModuleContext::getRuleIndex() const {
 
 
 std::any SimplexParser::ModuleContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<SimplexVisitor*>(visitor))
+  if (auto parserVisitor = dynamic_cast<SimplexParserVisitor*>(visitor))
     return parserVisitor->visitModule(this);
   else
     return visitor->visitChildren(this);
@@ -266,63 +285,99 @@ SimplexParser::ModuleContext* SimplexParser::module() {
     exitRule();
   });
   try {
-    size_t alt;
+    enterOuterAlt(_localctx, 1);
     setState(53);
     _errHandler->sync(this);
-    switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 4, _ctx)) {
-    case 1: {
-      enterOuterAlt(_localctx, 1);
-      setState(37);
-      _errHandler->sync(this);
 
-      _la = _input->LA(1);
-      if (_la == SimplexParser::NEWLINE) {
-        setState(36);
-        match(SimplexParser::NEWLINE);
-      }
-      break;
-    }
-
-    case 2: {
-      enterOuterAlt(_localctx, 2);
-      setState(40);
-      _errHandler->sync(this);
-
-      _la = _input->LA(1);
-      if (_la == SimplexParser::NEWLINE) {
-        setState(39);
-        match(SimplexParser::NEWLINE);
-      }
-      setState(42);
+    _la = _input->LA(1);
+    if ((((_la & ~ 0x3fULL) == 0) &&
+      ((1ULL << _la) & 458752) != 0)) {
+      setState(44);
       decl();
-      setState(47);
+      setState(50);
       _errHandler->sync(this);
-      alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 2, _ctx);
-      while (alt != 2 && alt != atn::ATN::INVALID_ALT_NUMBER) {
-        if (alt == 1) {
-          setState(43);
-          match(SimplexParser::NEWLINE);
-          setState(44);
-          decl(); 
-        }
-        setState(49);
-        _errHandler->sync(this);
-        alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 2, _ctx);
-      }
-      setState(51);
-      _errHandler->sync(this);
-
       _la = _input->LA(1);
-      if (_la == SimplexParser::NEWLINE) {
-        setState(50);
-        match(SimplexParser::NEWLINE);
-      }
-      break;
-    }
+      while (_la == SimplexParser::SEMI
 
-    default:
-      break;
+      || _la == SimplexParser::EOS) {
+        setState(45);
+        eos();
+        setState(46);
+        decl();
+        setState(52);
+        _errHandler->sync(this);
+        _la = _input->LA(1);
+      }
     }
+   
+  }
+  catch (RecognitionException &e) {
+    _errHandler->reportError(this, e);
+    _localctx->exception = std::current_exception();
+    _errHandler->recover(this, _localctx->exception);
+  }
+
+  return _localctx;
+}
+
+//----------------- BlockContext ------------------------------------------------------------------
+
+SimplexParser::BlockContext::BlockContext(ParserRuleContext *parent, size_t invokingState)
+  : ParserRuleContext(parent, invokingState) {
+}
+
+tree::TerminalNode* SimplexParser::BlockContext::L_BRACE() {
+  return getToken(SimplexParser::L_BRACE, 0);
+}
+
+tree::TerminalNode* SimplexParser::BlockContext::R_BRACE() {
+  return getToken(SimplexParser::R_BRACE, 0);
+}
+
+SimplexParser::StatementsContext* SimplexParser::BlockContext::statements() {
+  return getRuleContext<SimplexParser::StatementsContext>(0);
+}
+
+
+size_t SimplexParser::BlockContext::getRuleIndex() const {
+  return SimplexParser::RuleBlock;
+}
+
+
+std::any SimplexParser::BlockContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<SimplexParserVisitor*>(visitor))
+    return parserVisitor->visitBlock(this);
+  else
+    return visitor->visitChildren(this);
+}
+
+SimplexParser::BlockContext* SimplexParser::block() {
+  BlockContext *_localctx = _tracker.createInstance<BlockContext>(_ctx, getState());
+  enterRule(_localctx, 2, SimplexParser::RuleBlock);
+  size_t _la = 0;
+
+#if __cplusplus > 201703L
+  auto onExit = finally([=, this] {
+#else
+  auto onExit = finally([=] {
+#endif
+    exitRule();
+  });
+  try {
+    enterOuterAlt(_localctx, 1);
+    setState(55);
+    match(SimplexParser::L_BRACE);
+    setState(57);
+    _errHandler->sync(this);
+
+    _la = _input->LA(1);
+    if ((((_la & ~ 0x3fULL) == 0) &&
+      ((1ULL << _la) & 123142144) != 0)) {
+      setState(56);
+      statements();
+    }
+    setState(59);
+    match(SimplexParser::R_BRACE);
    
   }
   catch (RecognitionException &e) {
@@ -340,20 +395,20 @@ SimplexParser::StatementsContext::StatementsContext(ParserRuleContext *parent, s
   : ParserRuleContext(parent, invokingState) {
 }
 
-std::vector<tree::TerminalNode *> SimplexParser::StatementsContext::NEWLINE() {
-  return getTokens(SimplexParser::NEWLINE);
-}
-
-tree::TerminalNode* SimplexParser::StatementsContext::NEWLINE(size_t i) {
-  return getToken(SimplexParser::NEWLINE, i);
-}
-
 std::vector<SimplexParser::StatementContext *> SimplexParser::StatementsContext::statement() {
   return getRuleContexts<SimplexParser::StatementContext>();
 }
 
 SimplexParser::StatementContext* SimplexParser::StatementsContext::statement(size_t i) {
   return getRuleContext<SimplexParser::StatementContext>(i);
+}
+
+std::vector<SimplexParser::EosContext *> SimplexParser::StatementsContext::eos() {
+  return getRuleContexts<SimplexParser::EosContext>();
+}
+
+SimplexParser::EosContext* SimplexParser::StatementsContext::eos(size_t i) {
+  return getRuleContext<SimplexParser::EosContext>(i);
 }
 
 
@@ -363,7 +418,7 @@ size_t SimplexParser::StatementsContext::getRuleIndex() const {
 
 
 std::any SimplexParser::StatementsContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<SimplexVisitor*>(visitor))
+  if (auto parserVisitor = dynamic_cast<SimplexParserVisitor*>(visitor))
     return parserVisitor->visitStatements(this);
   else
     return visitor->visitChildren(this);
@@ -371,7 +426,7 @@ std::any SimplexParser::StatementsContext::accept(tree::ParseTreeVisitor *visito
 
 SimplexParser::StatementsContext* SimplexParser::statements() {
   StatementsContext *_localctx = _tracker.createInstance<StatementsContext>(_ctx, getState());
-  enterRule(_localctx, 2, SimplexParser::RuleStatements);
+  enterRule(_localctx, 4, SimplexParser::RuleStatements);
   size_t _la = 0;
 
 #if __cplusplus > 201703L
@@ -382,63 +437,20 @@ SimplexParser::StatementsContext* SimplexParser::statements() {
     exitRule();
   });
   try {
-    size_t alt;
-    setState(72);
+    enterOuterAlt(_localctx, 1);
+    setState(64); 
     _errHandler->sync(this);
-    switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 9, _ctx)) {
-    case 1: {
-      enterOuterAlt(_localctx, 1);
-      setState(56);
-      _errHandler->sync(this);
-
-      _la = _input->LA(1);
-      if (_la == SimplexParser::NEWLINE) {
-        setState(55);
-        match(SimplexParser::NEWLINE);
-      }
-      break;
-    }
-
-    case 2: {
-      enterOuterAlt(_localctx, 2);
-      setState(59);
-      _errHandler->sync(this);
-
-      _la = _input->LA(1);
-      if (_la == SimplexParser::NEWLINE) {
-        setState(58);
-        match(SimplexParser::NEWLINE);
-      }
+    _la = _input->LA(1);
+    do {
       setState(61);
       statement();
-      setState(66);
+      setState(62);
+      eos();
+      setState(66); 
       _errHandler->sync(this);
-      alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 7, _ctx);
-      while (alt != 2 && alt != atn::ATN::INVALID_ALT_NUMBER) {
-        if (alt == 1) {
-          setState(62);
-          match(SimplexParser::NEWLINE);
-          setState(63);
-          statement(); 
-        }
-        setState(68);
-        _errHandler->sync(this);
-        alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 7, _ctx);
-      }
-      setState(70);
-      _errHandler->sync(this);
-
       _la = _input->LA(1);
-      if (_la == SimplexParser::NEWLINE) {
-        setState(69);
-        match(SimplexParser::NEWLINE);
-      }
-      break;
-    }
-
-    default:
-      break;
-    }
+    } while ((((_la & ~ 0x3fULL) == 0) &&
+      ((1ULL << _la) & 123142144) != 0));
    
   }
   catch (RecognitionException &e) {
@@ -460,6 +472,30 @@ SimplexParser::DeclContext* SimplexParser::StatementContext::decl() {
   return getRuleContext<SimplexParser::DeclContext>(0);
 }
 
+tree::TerminalNode* SimplexParser::StatementContext::RETURN() {
+  return getToken(SimplexParser::RETURN, 0);
+}
+
+SimplexParser::ExprContext* SimplexParser::StatementContext::expr() {
+  return getRuleContext<SimplexParser::ExprContext>(0);
+}
+
+tree::TerminalNode* SimplexParser::StatementContext::CONTINUE() {
+  return getToken(SimplexParser::CONTINUE, 0);
+}
+
+tree::TerminalNode* SimplexParser::StatementContext::BREAK() {
+  return getToken(SimplexParser::BREAK, 0);
+}
+
+SimplexParser::If_statementContext* SimplexParser::StatementContext::if_statement() {
+  return getRuleContext<SimplexParser::If_statementContext>(0);
+}
+
+SimplexParser::For_statementContext* SimplexParser::StatementContext::for_statement() {
+  return getRuleContext<SimplexParser::For_statementContext>(0);
+}
+
 
 size_t SimplexParser::StatementContext::getRuleIndex() const {
   return SimplexParser::RuleStatement;
@@ -467,7 +503,7 @@ size_t SimplexParser::StatementContext::getRuleIndex() const {
 
 
 std::any SimplexParser::StatementContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<SimplexVisitor*>(visitor))
+  if (auto parserVisitor = dynamic_cast<SimplexParserVisitor*>(visitor))
     return parserVisitor->visitStatement(this);
   else
     return visitor->visitChildren(this);
@@ -475,7 +511,420 @@ std::any SimplexParser::StatementContext::accept(tree::ParseTreeVisitor *visitor
 
 SimplexParser::StatementContext* SimplexParser::statement() {
   StatementContext *_localctx = _tracker.createInstance<StatementContext>(_ctx, getState());
-  enterRule(_localctx, 4, SimplexParser::RuleStatement);
+  enterRule(_localctx, 6, SimplexParser::RuleStatement);
+  size_t _la = 0;
+
+#if __cplusplus > 201703L
+  auto onExit = finally([=, this] {
+#else
+  auto onExit = finally([=] {
+#endif
+    exitRule();
+  });
+  try {
+    setState(77);
+    _errHandler->sync(this);
+    switch (_input->LA(1)) {
+      case SimplexParser::VAR:
+      case SimplexParser::CONST:
+      case SimplexParser::DEF: {
+        enterOuterAlt(_localctx, 1);
+        setState(68);
+        decl();
+        break;
+      }
+
+      case SimplexParser::RETURN: {
+        enterOuterAlt(_localctx, 2);
+        setState(69);
+        match(SimplexParser::RETURN);
+        setState(71);
+        _errHandler->sync(this);
+
+        _la = _input->LA(1);
+        if ((((_la & ~ 0x3fULL) == 0) &&
+          ((1ULL << _la) & 403198982) != 0)) {
+          setState(70);
+          expr(0);
+        }
+        break;
+      }
+
+      case SimplexParser::CONTINUE: {
+        enterOuterAlt(_localctx, 3);
+        setState(73);
+        match(SimplexParser::CONTINUE);
+        break;
+      }
+
+      case SimplexParser::BREAK: {
+        enterOuterAlt(_localctx, 4);
+        setState(74);
+        match(SimplexParser::BREAK);
+        break;
+      }
+
+      case SimplexParser::IF: {
+        enterOuterAlt(_localctx, 5);
+        setState(75);
+        if_statement();
+        break;
+      }
+
+      case SimplexParser::FOR: {
+        enterOuterAlt(_localctx, 6);
+        setState(76);
+        for_statement();
+        break;
+      }
+
+    default:
+      throw NoViableAltException(this);
+    }
+   
+  }
+  catch (RecognitionException &e) {
+    _errHandler->reportError(this, e);
+    _localctx->exception = std::current_exception();
+    _errHandler->recover(this, _localctx->exception);
+  }
+
+  return _localctx;
+}
+
+//----------------- If_statementContext ------------------------------------------------------------------
+
+SimplexParser::If_statementContext::If_statementContext(ParserRuleContext *parent, size_t invokingState)
+  : ParserRuleContext(parent, invokingState) {
+}
+
+std::vector<tree::TerminalNode *> SimplexParser::If_statementContext::IF() {
+  return getTokens(SimplexParser::IF);
+}
+
+tree::TerminalNode* SimplexParser::If_statementContext::IF(size_t i) {
+  return getToken(SimplexParser::IF, i);
+}
+
+std::vector<SimplexParser::ExprContext *> SimplexParser::If_statementContext::expr() {
+  return getRuleContexts<SimplexParser::ExprContext>();
+}
+
+SimplexParser::ExprContext* SimplexParser::If_statementContext::expr(size_t i) {
+  return getRuleContext<SimplexParser::ExprContext>(i);
+}
+
+std::vector<SimplexParser::BlockContext *> SimplexParser::If_statementContext::block() {
+  return getRuleContexts<SimplexParser::BlockContext>();
+}
+
+SimplexParser::BlockContext* SimplexParser::If_statementContext::block(size_t i) {
+  return getRuleContext<SimplexParser::BlockContext>(i);
+}
+
+std::vector<tree::TerminalNode *> SimplexParser::If_statementContext::ELSE() {
+  return getTokens(SimplexParser::ELSE);
+}
+
+tree::TerminalNode* SimplexParser::If_statementContext::ELSE(size_t i) {
+  return getToken(SimplexParser::ELSE, i);
+}
+
+
+size_t SimplexParser::If_statementContext::getRuleIndex() const {
+  return SimplexParser::RuleIf_statement;
+}
+
+
+std::any SimplexParser::If_statementContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<SimplexParserVisitor*>(visitor))
+    return parserVisitor->visitIf_statement(this);
+  else
+    return visitor->visitChildren(this);
+}
+
+SimplexParser::If_statementContext* SimplexParser::if_statement() {
+  If_statementContext *_localctx = _tracker.createInstance<If_statementContext>(_ctx, getState());
+  enterRule(_localctx, 8, SimplexParser::RuleIf_statement);
+  size_t _la = 0;
+
+#if __cplusplus > 201703L
+  auto onExit = finally([=, this] {
+#else
+  auto onExit = finally([=] {
+#endif
+    exitRule();
+  });
+  try {
+    size_t alt;
+    enterOuterAlt(_localctx, 1);
+    setState(79);
+    match(SimplexParser::IF);
+    setState(80);
+    expr(0);
+    setState(81);
+    block();
+    setState(89);
+    _errHandler->sync(this);
+    alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 6, _ctx);
+    while (alt != 2 && alt != atn::ATN::INVALID_ALT_NUMBER) {
+      if (alt == 1) {
+        setState(82);
+        match(SimplexParser::ELSE);
+        setState(83);
+        match(SimplexParser::IF);
+        setState(84);
+        expr(0);
+        setState(85);
+        block(); 
+      }
+      setState(91);
+      _errHandler->sync(this);
+      alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 6, _ctx);
+    }
+    setState(94);
+    _errHandler->sync(this);
+
+    _la = _input->LA(1);
+    if (_la == SimplexParser::ELSE) {
+      setState(92);
+      match(SimplexParser::ELSE);
+      setState(93);
+      block();
+    }
+   
+  }
+  catch (RecognitionException &e) {
+    _errHandler->reportError(this, e);
+    _localctx->exception = std::current_exception();
+    _errHandler->recover(this, _localctx->exception);
+  }
+
+  return _localctx;
+}
+
+//----------------- For_statementContext ------------------------------------------------------------------
+
+SimplexParser::For_statementContext::For_statementContext(ParserRuleContext *parent, size_t invokingState)
+  : ParserRuleContext(parent, invokingState) {
+}
+
+
+size_t SimplexParser::For_statementContext::getRuleIndex() const {
+  return SimplexParser::RuleFor_statement;
+}
+
+void SimplexParser::For_statementContext::copyFrom(For_statementContext *ctx) {
+  ParserRuleContext::copyFrom(ctx);
+}
+
+//----------------- LoopContext ------------------------------------------------------------------
+
+tree::TerminalNode* SimplexParser::LoopContext::FOR() {
+  return getToken(SimplexParser::FOR, 0);
+}
+
+tree::TerminalNode* SimplexParser::LoopContext::L_BRACE() {
+  return getToken(SimplexParser::L_BRACE, 0);
+}
+
+SimplexParser::StatementsContext* SimplexParser::LoopContext::statements() {
+  return getRuleContext<SimplexParser::StatementsContext>(0);
+}
+
+tree::TerminalNode* SimplexParser::LoopContext::R_BRACE() {
+  return getToken(SimplexParser::R_BRACE, 0);
+}
+
+SimplexParser::LoopContext::LoopContext(For_statementContext *ctx) { copyFrom(ctx); }
+
+
+std::any SimplexParser::LoopContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<SimplexParserVisitor*>(visitor))
+    return parserVisitor->visitLoop(this);
+  else
+    return visitor->visitChildren(this);
+}
+//----------------- For_eachContext ------------------------------------------------------------------
+
+tree::TerminalNode* SimplexParser::For_eachContext::FOR() {
+  return getToken(SimplexParser::FOR, 0);
+}
+
+tree::TerminalNode* SimplexParser::For_eachContext::ID() {
+  return getToken(SimplexParser::ID, 0);
+}
+
+tree::TerminalNode* SimplexParser::For_eachContext::IN() {
+  return getToken(SimplexParser::IN, 0);
+}
+
+SimplexParser::ExprContext* SimplexParser::For_eachContext::expr() {
+  return getRuleContext<SimplexParser::ExprContext>(0);
+}
+
+tree::TerminalNode* SimplexParser::For_eachContext::L_BRACE() {
+  return getToken(SimplexParser::L_BRACE, 0);
+}
+
+SimplexParser::StatementsContext* SimplexParser::For_eachContext::statements() {
+  return getRuleContext<SimplexParser::StatementsContext>(0);
+}
+
+tree::TerminalNode* SimplexParser::For_eachContext::R_BRACE() {
+  return getToken(SimplexParser::R_BRACE, 0);
+}
+
+SimplexParser::For_eachContext::For_eachContext(For_statementContext *ctx) { copyFrom(ctx); }
+
+
+std::any SimplexParser::For_eachContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<SimplexParserVisitor*>(visitor))
+    return parserVisitor->visitFor_each(this);
+  else
+    return visitor->visitChildren(this);
+}
+//----------------- Conditional_loopContext ------------------------------------------------------------------
+
+tree::TerminalNode* SimplexParser::Conditional_loopContext::FOR() {
+  return getToken(SimplexParser::FOR, 0);
+}
+
+SimplexParser::ExprContext* SimplexParser::Conditional_loopContext::expr() {
+  return getRuleContext<SimplexParser::ExprContext>(0);
+}
+
+tree::TerminalNode* SimplexParser::Conditional_loopContext::L_BRACE() {
+  return getToken(SimplexParser::L_BRACE, 0);
+}
+
+SimplexParser::StatementsContext* SimplexParser::Conditional_loopContext::statements() {
+  return getRuleContext<SimplexParser::StatementsContext>(0);
+}
+
+tree::TerminalNode* SimplexParser::Conditional_loopContext::R_BRACE() {
+  return getToken(SimplexParser::R_BRACE, 0);
+}
+
+SimplexParser::Conditional_loopContext::Conditional_loopContext(For_statementContext *ctx) { copyFrom(ctx); }
+
+
+std::any SimplexParser::Conditional_loopContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<SimplexParserVisitor*>(visitor))
+    return parserVisitor->visitConditional_loop(this);
+  else
+    return visitor->visitChildren(this);
+}
+SimplexParser::For_statementContext* SimplexParser::for_statement() {
+  For_statementContext *_localctx = _tracker.createInstance<For_statementContext>(_ctx, getState());
+  enterRule(_localctx, 10, SimplexParser::RuleFor_statement);
+
+#if __cplusplus > 201703L
+  auto onExit = finally([=, this] {
+#else
+  auto onExit = finally([=] {
+#endif
+    exitRule();
+  });
+  try {
+    setState(115);
+    _errHandler->sync(this);
+    switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 8, _ctx)) {
+    case 1: {
+      _localctx = _tracker.createInstance<SimplexParser::LoopContext>(_localctx);
+      enterOuterAlt(_localctx, 1);
+      setState(96);
+      match(SimplexParser::FOR);
+      setState(97);
+      match(SimplexParser::L_BRACE);
+      setState(98);
+      statements();
+      setState(99);
+      match(SimplexParser::R_BRACE);
+      break;
+    }
+
+    case 2: {
+      _localctx = _tracker.createInstance<SimplexParser::Conditional_loopContext>(_localctx);
+      enterOuterAlt(_localctx, 2);
+      setState(101);
+      match(SimplexParser::FOR);
+      setState(102);
+      expr(0);
+      setState(103);
+      match(SimplexParser::L_BRACE);
+      setState(104);
+      statements();
+      setState(105);
+      match(SimplexParser::R_BRACE);
+      break;
+    }
+
+    case 3: {
+      _localctx = _tracker.createInstance<SimplexParser::For_eachContext>(_localctx);
+      enterOuterAlt(_localctx, 3);
+      setState(107);
+      match(SimplexParser::FOR);
+      setState(108);
+      match(SimplexParser::ID);
+      setState(109);
+      match(SimplexParser::IN);
+      setState(110);
+      expr(0);
+      setState(111);
+      match(SimplexParser::L_BRACE);
+      setState(112);
+      statements();
+      setState(113);
+      match(SimplexParser::R_BRACE);
+      break;
+    }
+
+    default:
+      break;
+    }
+   
+  }
+  catch (RecognitionException &e) {
+    _errHandler->reportError(this, e);
+    _localctx->exception = std::current_exception();
+    _errHandler->recover(this, _localctx->exception);
+  }
+
+  return _localctx;
+}
+
+//----------------- EosContext ------------------------------------------------------------------
+
+SimplexParser::EosContext::EosContext(ParserRuleContext *parent, size_t invokingState)
+  : ParserRuleContext(parent, invokingState) {
+}
+
+tree::TerminalNode* SimplexParser::EosContext::SEMI() {
+  return getToken(SimplexParser::SEMI, 0);
+}
+
+tree::TerminalNode* SimplexParser::EosContext::EOS() {
+  return getToken(SimplexParser::EOS, 0);
+}
+
+
+size_t SimplexParser::EosContext::getRuleIndex() const {
+  return SimplexParser::RuleEos;
+}
+
+
+std::any SimplexParser::EosContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<SimplexParserVisitor*>(visitor))
+    return parserVisitor->visitEos(this);
+  else
+    return visitor->visitChildren(this);
+}
+
+SimplexParser::EosContext* SimplexParser::eos() {
+  EosContext *_localctx = _tracker.createInstance<EosContext>(_ctx, getState());
+  enterRule(_localctx, 12, SimplexParser::RuleEos);
+  size_t _la = 0;
 
 #if __cplusplus > 201703L
   auto onExit = finally([=, this] {
@@ -486,8 +935,17 @@ SimplexParser::StatementContext* SimplexParser::statement() {
   });
   try {
     enterOuterAlt(_localctx, 1);
-    setState(74);
-    decl();
+    setState(117);
+    _la = _input->LA(1);
+    if (!(_la == SimplexParser::SEMI
+
+    || _la == SimplexParser::EOS)) {
+    _errHandler->recoverInline(this);
+    }
+    else {
+      _errHandler->reportMatch(this);
+      consume();
+    }
    
   }
   catch (RecognitionException &e) {
@@ -544,7 +1002,7 @@ size_t SimplexParser::DeclContext::getRuleIndex() const {
 
 
 std::any SimplexParser::DeclContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<SimplexVisitor*>(visitor))
+  if (auto parserVisitor = dynamic_cast<SimplexParserVisitor*>(visitor))
     return parserVisitor->visitDecl(this);
   else
     return visitor->visitChildren(this);
@@ -552,7 +1010,7 @@ std::any SimplexParser::DeclContext::accept(tree::ParseTreeVisitor *visitor) {
 
 SimplexParser::DeclContext* SimplexParser::decl() {
   DeclContext *_localctx = _tracker.createInstance<DeclContext>(_ctx, getState());
-  enterRule(_localctx, 6, SimplexParser::RuleDecl);
+  enterRule(_localctx, 14, SimplexParser::RuleDecl);
   size_t _la = 0;
 
 #if __cplusplus > 201703L
@@ -564,31 +1022,31 @@ SimplexParser::DeclContext* SimplexParser::decl() {
   });
   try {
     enterOuterAlt(_localctx, 1);
-    setState(76);
+    setState(119);
     _la = _input->LA(1);
     if (!((((_la & ~ 0x3fULL) == 0) &&
-      ((1ULL << _la) & 229376) != 0))) {
+      ((1ULL << _la) & 458752) != 0))) {
     _errHandler->recoverInline(this);
     }
     else {
       _errHandler->reportMatch(this);
       consume();
     }
-    setState(77);
+    setState(120);
     match(SimplexParser::ID);
-    setState(80);
+    setState(123);
     _errHandler->sync(this);
 
     _la = _input->LA(1);
     if (_la == SimplexParser::COLON) {
-      setState(78);
+      setState(121);
       match(SimplexParser::COLON);
-      setState(79);
+      setState(122);
       type_expr();
     }
-    setState(82);
+    setState(125);
     match(SimplexParser::ASSIGN);
-    setState(83);
+    setState(126);
     expr(0);
    
   }
@@ -694,7 +1152,7 @@ size_t SimplexParser::ExprContext::getRuleIndex() const {
 
 
 std::any SimplexParser::ExprContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<SimplexVisitor*>(visitor))
+  if (auto parserVisitor = dynamic_cast<SimplexParserVisitor*>(visitor))
     return parserVisitor->visitExpr(this);
   else
     return visitor->visitChildren(this);
@@ -711,8 +1169,8 @@ SimplexParser::ExprContext* SimplexParser::expr(int precedence) {
   SimplexParser::ExprContext *_localctx = _tracker.createInstance<ExprContext>(_ctx, parentState);
   SimplexParser::ExprContext *previousContext = _localctx;
   (void)previousContext; // Silence compiler, in case the context is not used by generated code.
-  size_t startState = 8;
-  enterRecursionRule(_localctx, 8, SimplexParser::RuleExpr, precedence);
+  size_t startState = 16;
+  enterRecursionRule(_localctx, 16, SimplexParser::RuleExpr, precedence);
 
     size_t _la = 0;
 
@@ -726,62 +1184,62 @@ SimplexParser::ExprContext* SimplexParser::expr(int precedence) {
   try {
     size_t alt;
     enterOuterAlt(_localctx, 1);
-    setState(118);
+    setState(161);
     _errHandler->sync(this);
-    switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 14, _ctx)) {
+    switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 13, _ctx)) {
     case 1: {
-      setState(86);
+      setState(129);
       match(SimplexParser::L_PAREN);
-      setState(87);
+      setState(130);
       expr(0);
-      setState(88);
+      setState(131);
       match(SimplexParser::R_PAREN);
       break;
     }
 
     case 2: {
-      setState(90);
+      setState(133);
       match(SimplexParser::ID);
-      setState(91);
+      setState(134);
       match(SimplexParser::L_PAREN);
-      setState(103);
+      setState(146);
       _errHandler->sync(this);
 
       _la = _input->LA(1);
       if ((((_la & ~ 0x3fULL) == 0) &&
-        ((1ULL << _la) & 1841194) != 0)) {
-        setState(92);
+        ((1ULL << _la) & 403198982) != 0)) {
+        setState(135);
         expr(0);
-        setState(97);
+        setState(140);
         _errHandler->sync(this);
-        alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 11, _ctx);
+        alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 10, _ctx);
         while (alt != 2 && alt != atn::ATN::INVALID_ALT_NUMBER) {
           if (alt == 1) {
-            setState(93);
+            setState(136);
             match(SimplexParser::COMMA);
-            setState(94);
+            setState(137);
             expr(0); 
           }
-          setState(99);
+          setState(142);
           _errHandler->sync(this);
-          alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 11, _ctx);
+          alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 10, _ctx);
         }
-        setState(101);
+        setState(144);
         _errHandler->sync(this);
 
         _la = _input->LA(1);
         if (_la == SimplexParser::COMMA) {
-          setState(100);
+          setState(143);
           match(SimplexParser::COMMA);
         }
       }
-      setState(105);
+      setState(148);
       match(SimplexParser::R_PAREN);
       break;
     }
 
     case 3: {
-      setState(106);
+      setState(149);
       _la = _input->LA(1);
       if (!(_la == SimplexParser::ADD
 
@@ -792,63 +1250,63 @@ SimplexParser::ExprContext* SimplexParser::expr(int precedence) {
         _errHandler->reportMatch(this);
         consume();
       }
-      setState(107);
+      setState(150);
       expr(12);
       break;
     }
 
     case 4: {
-      setState(108);
+      setState(151);
       match(SimplexParser::ID);
       break;
     }
 
     case 5: {
-      setState(109);
+      setState(152);
       match(SimplexParser::INTEGER);
       break;
     }
 
     case 6: {
-      setState(110);
+      setState(153);
       match(SimplexParser::TYPE);
-      setState(111);
+      setState(154);
       type_expr();
       break;
     }
 
     case 7: {
-      setState(112);
+      setState(155);
       expr_void();
       break;
     }
 
     case 8: {
-      setState(113);
+      setState(156);
       expr_tuple();
       break;
     }
 
     case 9: {
-      setState(114);
+      setState(157);
       expr_struct();
       break;
     }
 
     case 10: {
-      setState(115);
+      setState(158);
       expr_array();
       break;
     }
 
     case 11: {
-      setState(116);
+      setState(159);
       expr_map();
       break;
     }
 
     case 12: {
-      setState(117);
+      setState(160);
       expr_func();
       break;
     }
@@ -857,24 +1315,24 @@ SimplexParser::ExprContext* SimplexParser::expr(int precedence) {
       break;
     }
     _ctx->stop = _input->LT(-1);
-    setState(128);
+    setState(171);
     _errHandler->sync(this);
-    alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 16, _ctx);
+    alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 15, _ctx);
     while (alt != 2 && alt != atn::ATN::INVALID_ALT_NUMBER) {
       if (alt == 1) {
         if (!_parseListeners.empty())
           triggerExitRuleEvent();
         previousContext = _localctx;
-        setState(126);
+        setState(169);
         _errHandler->sync(this);
-        switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 15, _ctx)) {
+        switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 14, _ctx)) {
         case 1: {
           _localctx = _tracker.createInstance<ExprContext>(parentContext, parentState);
           pushNewRecursionContext(_localctx, startState, RuleExpr);
-          setState(120);
+          setState(163);
 
           if (!(precpred(_ctx, 11))) throw FailedPredicateException(this, "precpred(_ctx, 11)");
-          setState(121);
+          setState(164);
           _la = _input->LA(1);
           if (!(_la == SimplexParser::MUL
 
@@ -885,7 +1343,7 @@ SimplexParser::ExprContext* SimplexParser::expr(int precedence) {
             _errHandler->reportMatch(this);
             consume();
           }
-          setState(122);
+          setState(165);
           expr(12);
           break;
         }
@@ -893,10 +1351,10 @@ SimplexParser::ExprContext* SimplexParser::expr(int precedence) {
         case 2: {
           _localctx = _tracker.createInstance<ExprContext>(parentContext, parentState);
           pushNewRecursionContext(_localctx, startState, RuleExpr);
-          setState(123);
+          setState(166);
 
           if (!(precpred(_ctx, 10))) throw FailedPredicateException(this, "precpred(_ctx, 10)");
-          setState(124);
+          setState(167);
           _la = _input->LA(1);
           if (!(_la == SimplexParser::ADD
 
@@ -907,7 +1365,7 @@ SimplexParser::ExprContext* SimplexParser::expr(int precedence) {
             _errHandler->reportMatch(this);
             consume();
           }
-          setState(125);
+          setState(168);
           expr(11);
           break;
         }
@@ -916,9 +1374,9 @@ SimplexParser::ExprContext* SimplexParser::expr(int precedence) {
           break;
         } 
       }
-      setState(130);
+      setState(173);
       _errHandler->sync(this);
-      alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 16, _ctx);
+      alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 15, _ctx);
     }
   }
   catch (RecognitionException &e) {
@@ -950,7 +1408,7 @@ size_t SimplexParser::Expr_voidContext::getRuleIndex() const {
 
 
 std::any SimplexParser::Expr_voidContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<SimplexVisitor*>(visitor))
+  if (auto parserVisitor = dynamic_cast<SimplexParserVisitor*>(visitor))
     return parserVisitor->visitExpr_void(this);
   else
     return visitor->visitChildren(this);
@@ -958,7 +1416,7 @@ std::any SimplexParser::Expr_voidContext::accept(tree::ParseTreeVisitor *visitor
 
 SimplexParser::Expr_voidContext* SimplexParser::expr_void() {
   Expr_voidContext *_localctx = _tracker.createInstance<Expr_voidContext>(_ctx, getState());
-  enterRule(_localctx, 10, SimplexParser::RuleExpr_void);
+  enterRule(_localctx, 18, SimplexParser::RuleExpr_void);
 
 #if __cplusplus > 201703L
   auto onExit = finally([=, this] {
@@ -969,9 +1427,9 @@ SimplexParser::Expr_voidContext* SimplexParser::expr_void() {
   });
   try {
     enterOuterAlt(_localctx, 1);
-    setState(131);
+    setState(174);
     match(SimplexParser::L_PAREN);
-    setState(132);
+    setState(175);
     match(SimplexParser::R_PAREN);
    
   }
@@ -1021,7 +1479,7 @@ size_t SimplexParser::Expr_tupleContext::getRuleIndex() const {
 
 
 std::any SimplexParser::Expr_tupleContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<SimplexVisitor*>(visitor))
+  if (auto parserVisitor = dynamic_cast<SimplexParserVisitor*>(visitor))
     return parserVisitor->visitExpr_tuple(this);
   else
     return visitor->visitChildren(this);
@@ -1029,7 +1487,7 @@ std::any SimplexParser::Expr_tupleContext::accept(tree::ParseTreeVisitor *visito
 
 SimplexParser::Expr_tupleContext* SimplexParser::expr_tuple() {
   Expr_tupleContext *_localctx = _tracker.createInstance<Expr_tupleContext>(_ctx, getState());
-  enterRule(_localctx, 12, SimplexParser::RuleExpr_tuple);
+  enterRule(_localctx, 20, SimplexParser::RuleExpr_tuple);
   size_t _la = 0;
 
 #if __cplusplus > 201703L
@@ -1042,33 +1500,33 @@ SimplexParser::Expr_tupleContext* SimplexParser::expr_tuple() {
   try {
     size_t alt;
     enterOuterAlt(_localctx, 1);
-    setState(134);
+    setState(177);
     match(SimplexParser::L_PAREN);
-    setState(135);
+    setState(178);
     expr(0);
-    setState(140);
+    setState(183);
     _errHandler->sync(this);
-    alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 17, _ctx);
+    alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 16, _ctx);
     while (alt != 2 && alt != atn::ATN::INVALID_ALT_NUMBER) {
       if (alt == 1) {
-        setState(136);
+        setState(179);
         match(SimplexParser::COMMA);
-        setState(137);
+        setState(180);
         expr(0); 
       }
-      setState(142);
+      setState(185);
       _errHandler->sync(this);
-      alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 17, _ctx);
+      alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 16, _ctx);
     }
-    setState(144);
+    setState(187);
     _errHandler->sync(this);
 
     _la = _input->LA(1);
     if (_la == SimplexParser::COMMA) {
-      setState(143);
+      setState(186);
       match(SimplexParser::COMMA);
     }
-    setState(146);
+    setState(189);
     match(SimplexParser::R_PAREN);
    
   }
@@ -1134,7 +1592,7 @@ size_t SimplexParser::Expr_structContext::getRuleIndex() const {
 
 
 std::any SimplexParser::Expr_structContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<SimplexVisitor*>(visitor))
+  if (auto parserVisitor = dynamic_cast<SimplexParserVisitor*>(visitor))
     return parserVisitor->visitExpr_struct(this);
   else
     return visitor->visitChildren(this);
@@ -1142,7 +1600,7 @@ std::any SimplexParser::Expr_structContext::accept(tree::ParseTreeVisitor *visit
 
 SimplexParser::Expr_structContext* SimplexParser::expr_struct() {
   Expr_structContext *_localctx = _tracker.createInstance<Expr_structContext>(_ctx, getState());
-  enterRule(_localctx, 14, SimplexParser::RuleExpr_struct);
+  enterRule(_localctx, 22, SimplexParser::RuleExpr_struct);
   size_t _la = 0;
 
 #if __cplusplus > 201703L
@@ -1155,41 +1613,41 @@ SimplexParser::Expr_structContext* SimplexParser::expr_struct() {
   try {
     size_t alt;
     enterOuterAlt(_localctx, 1);
-    setState(148);
+    setState(191);
     match(SimplexParser::L_PAREN);
-    setState(149);
+    setState(192);
     match(SimplexParser::ID);
-    setState(150);
+    setState(193);
     match(SimplexParser::COLON);
-    setState(151);
+    setState(194);
     expr(0);
-    setState(158);
+    setState(201);
     _errHandler->sync(this);
-    alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 19, _ctx);
+    alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 18, _ctx);
     while (alt != 2 && alt != atn::ATN::INVALID_ALT_NUMBER) {
       if (alt == 1) {
-        setState(152);
+        setState(195);
         match(SimplexParser::COMMA);
-        setState(153);
+        setState(196);
         match(SimplexParser::ID);
-        setState(154);
+        setState(197);
         match(SimplexParser::COLON);
-        setState(155);
+        setState(198);
         expr(0); 
       }
-      setState(160);
+      setState(203);
       _errHandler->sync(this);
-      alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 19, _ctx);
+      alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 18, _ctx);
     }
-    setState(162);
+    setState(205);
     _errHandler->sync(this);
 
     _la = _input->LA(1);
     if (_la == SimplexParser::COMMA) {
-      setState(161);
+      setState(204);
       match(SimplexParser::COMMA);
     }
-    setState(164);
+    setState(207);
     match(SimplexParser::R_PAREN);
    
   }
@@ -1239,7 +1697,7 @@ size_t SimplexParser::Expr_arrayContext::getRuleIndex() const {
 
 
 std::any SimplexParser::Expr_arrayContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<SimplexVisitor*>(visitor))
+  if (auto parserVisitor = dynamic_cast<SimplexParserVisitor*>(visitor))
     return parserVisitor->visitExpr_array(this);
   else
     return visitor->visitChildren(this);
@@ -1247,7 +1705,7 @@ std::any SimplexParser::Expr_arrayContext::accept(tree::ParseTreeVisitor *visito
 
 SimplexParser::Expr_arrayContext* SimplexParser::expr_array() {
   Expr_arrayContext *_localctx = _tracker.createInstance<Expr_arrayContext>(_ctx, getState());
-  enterRule(_localctx, 16, SimplexParser::RuleExpr_array);
+  enterRule(_localctx, 24, SimplexParser::RuleExpr_array);
   size_t _la = 0;
 
 #if __cplusplus > 201703L
@@ -1260,33 +1718,33 @@ SimplexParser::Expr_arrayContext* SimplexParser::expr_array() {
   try {
     size_t alt;
     enterOuterAlt(_localctx, 1);
-    setState(166);
+    setState(209);
     match(SimplexParser::L_BRACKET);
-    setState(167);
+    setState(210);
     expr(0);
-    setState(172);
+    setState(215);
     _errHandler->sync(this);
-    alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 21, _ctx);
+    alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 20, _ctx);
     while (alt != 2 && alt != atn::ATN::INVALID_ALT_NUMBER) {
       if (alt == 1) {
-        setState(168);
+        setState(211);
         match(SimplexParser::COMMA);
-        setState(169);
+        setState(212);
         expr(0); 
       }
-      setState(174);
+      setState(217);
       _errHandler->sync(this);
-      alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 21, _ctx);
+      alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 20, _ctx);
     }
-    setState(176);
+    setState(219);
     _errHandler->sync(this);
 
     _la = _input->LA(1);
     if (_la == SimplexParser::COMMA) {
-      setState(175);
+      setState(218);
       match(SimplexParser::COMMA);
     }
-    setState(178);
+    setState(221);
     match(SimplexParser::R_BRACKET);
    
   }
@@ -1344,7 +1802,7 @@ size_t SimplexParser::Expr_mapContext::getRuleIndex() const {
 
 
 std::any SimplexParser::Expr_mapContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<SimplexVisitor*>(visitor))
+  if (auto parserVisitor = dynamic_cast<SimplexParserVisitor*>(visitor))
     return parserVisitor->visitExpr_map(this);
   else
     return visitor->visitChildren(this);
@@ -1352,7 +1810,7 @@ std::any SimplexParser::Expr_mapContext::accept(tree::ParseTreeVisitor *visitor)
 
 SimplexParser::Expr_mapContext* SimplexParser::expr_map() {
   Expr_mapContext *_localctx = _tracker.createInstance<Expr_mapContext>(_ctx, getState());
-  enterRule(_localctx, 18, SimplexParser::RuleExpr_map);
+  enterRule(_localctx, 26, SimplexParser::RuleExpr_map);
   size_t _la = 0;
 
 #if __cplusplus > 201703L
@@ -1365,41 +1823,41 @@ SimplexParser::Expr_mapContext* SimplexParser::expr_map() {
   try {
     size_t alt;
     enterOuterAlt(_localctx, 1);
-    setState(180);
+    setState(223);
     match(SimplexParser::L_BRACKET);
-    setState(181);
+    setState(224);
     expr(0);
-    setState(182);
+    setState(225);
     match(SimplexParser::COLON);
-    setState(183);
+    setState(226);
     expr(0);
-    setState(191);
+    setState(234);
     _errHandler->sync(this);
-    alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 23, _ctx);
+    alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 22, _ctx);
     while (alt != 2 && alt != atn::ATN::INVALID_ALT_NUMBER) {
       if (alt == 1) {
-        setState(184);
+        setState(227);
         match(SimplexParser::COMMA);
-        setState(185);
+        setState(228);
         expr(0);
-        setState(186);
+        setState(229);
         match(SimplexParser::COLON);
-        setState(187);
+        setState(230);
         expr(0); 
       }
-      setState(193);
+      setState(236);
       _errHandler->sync(this);
-      alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 23, _ctx);
+      alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 22, _ctx);
     }
-    setState(195);
+    setState(238);
     _errHandler->sync(this);
 
     _la = _input->LA(1);
     if (_la == SimplexParser::COMMA) {
-      setState(194);
+      setState(237);
       match(SimplexParser::COMMA);
     }
-    setState(197);
+    setState(240);
     match(SimplexParser::R_BRACKET);
    
   }
@@ -1424,10 +1882,6 @@ tree::TerminalNode* SimplexParser::Expr_funcContext::L_BRACE() {
 
 SimplexParser::Type_funcContext* SimplexParser::Expr_funcContext::type_func() {
   return getRuleContext<SimplexParser::Type_funcContext>(0);
-}
-
-tree::TerminalNode* SimplexParser::Expr_funcContext::NEWLINE() {
-  return getToken(SimplexParser::NEWLINE, 0);
 }
 
 SimplexParser::StatementsContext* SimplexParser::Expr_funcContext::statements() {
@@ -1493,7 +1947,7 @@ size_t SimplexParser::Expr_funcContext::getRuleIndex() const {
 
 
 std::any SimplexParser::Expr_funcContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<SimplexVisitor*>(visitor))
+  if (auto parserVisitor = dynamic_cast<SimplexParserVisitor*>(visitor))
     return parserVisitor->visitExpr_func(this);
   else
     return visitor->visitChildren(this);
@@ -1501,7 +1955,7 @@ std::any SimplexParser::Expr_funcContext::accept(tree::ParseTreeVisitor *visitor
 
 SimplexParser::Expr_funcContext* SimplexParser::expr_func() {
   Expr_funcContext *_localctx = _tracker.createInstance<Expr_funcContext>(_ctx, getState());
-  enterRule(_localctx, 20, SimplexParser::RuleExpr_func);
+  enterRule(_localctx, 28, SimplexParser::RuleExpr_func);
   size_t _la = 0;
 
 #if __cplusplus > 201703L
@@ -1513,69 +1967,67 @@ SimplexParser::Expr_funcContext* SimplexParser::expr_func() {
   });
   try {
     size_t alt;
-    setState(227);
+    setState(269);
     _errHandler->sync(this);
-    switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 27, _ctx)) {
+    switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 26, _ctx)) {
     case 1: {
       enterOuterAlt(_localctx, 1);
-      setState(199);
+      setState(242);
       match(SimplexParser::L_BRACE);
-      setState(200);
+      setState(243);
       type_func();
-      setState(201);
-      match(SimplexParser::NEWLINE);
-      setState(202);
+      setState(244);
       statements();
-      setState(203);
+      setState(245);
       match(SimplexParser::R_BRACE);
       break;
     }
 
     case 2: {
       enterOuterAlt(_localctx, 2);
-      setState(205);
+      setState(247);
       match(SimplexParser::L_BRACE);
-      setState(206);
+      setState(248);
       match(SimplexParser::L_PAREN);
-      setState(207);
+      setState(249);
       match(SimplexParser::ID);
-      setState(208);
+      setState(250);
       match(SimplexParser::COLON);
-      setState(209);
+      setState(251);
       type_expr();
-      setState(216);
+      setState(258);
       _errHandler->sync(this);
-      alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 25, _ctx);
+      alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 24, _ctx);
       while (alt != 2 && alt != atn::ATN::INVALID_ALT_NUMBER) {
         if (alt == 1) {
-          setState(210);
+          setState(252);
           match(SimplexParser::COMMA);
-          setState(211);
+          setState(253);
           match(SimplexParser::ID);
-          setState(212);
+          setState(254);
           match(SimplexParser::COLON);
-          setState(213);
+          setState(255);
           type_expr(); 
         }
-        setState(218);
+        setState(260);
         _errHandler->sync(this);
-        alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 25, _ctx);
+        alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 24, _ctx);
       }
-      setState(220);
+      setState(262);
       _errHandler->sync(this);
 
       _la = _input->LA(1);
       if (_la == SimplexParser::COMMA) {
-        setState(219);
+        setState(261);
         match(SimplexParser::COMMA);
       }
-      setState(222);
+      setState(264);
       match(SimplexParser::R_PAREN);
-      setState(223);
+      setState(265);
       match(SimplexParser::ARROW);
-      setState(224);
+      setState(266);
       expr(0);
-      setState(225);
+      setState(267);
       match(SimplexParser::R_BRACE);
       break;
     }
@@ -1635,7 +2087,7 @@ size_t SimplexParser::Type_exprContext::getRuleIndex() const {
 
 
 std::any SimplexParser::Type_exprContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<SimplexVisitor*>(visitor))
+  if (auto parserVisitor = dynamic_cast<SimplexParserVisitor*>(visitor))
     return parserVisitor->visitType_expr(this);
   else
     return visitor->visitChildren(this);
@@ -1643,7 +2095,7 @@ std::any SimplexParser::Type_exprContext::accept(tree::ParseTreeVisitor *visitor
 
 SimplexParser::Type_exprContext* SimplexParser::type_expr() {
   Type_exprContext *_localctx = _tracker.createInstance<Type_exprContext>(_ctx, getState());
-  enterRule(_localctx, 22, SimplexParser::RuleType_expr);
+  enterRule(_localctx, 30, SimplexParser::RuleType_expr);
 
 #if __cplusplus > 201703L
   auto onExit = finally([=, this] {
@@ -1653,54 +2105,54 @@ SimplexParser::Type_exprContext* SimplexParser::type_expr() {
     exitRule();
   });
   try {
-    setState(236);
+    setState(278);
     _errHandler->sync(this);
-    switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 28, _ctx)) {
+    switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 27, _ctx)) {
     case 1: {
       enterOuterAlt(_localctx, 1);
-      setState(229);
+      setState(271);
       match(SimplexParser::ID);
       break;
     }
 
     case 2: {
       enterOuterAlt(_localctx, 2);
-      setState(230);
+      setState(272);
       type_void();
       break;
     }
 
     case 3: {
       enterOuterAlt(_localctx, 3);
-      setState(231);
+      setState(273);
       type_tuple();
       break;
     }
 
     case 4: {
       enterOuterAlt(_localctx, 4);
-      setState(232);
+      setState(274);
       type_struct();
       break;
     }
 
     case 5: {
       enterOuterAlt(_localctx, 5);
-      setState(233);
+      setState(275);
       type_array();
       break;
     }
 
     case 6: {
       enterOuterAlt(_localctx, 6);
-      setState(234);
+      setState(276);
       type_map();
       break;
     }
 
     case 7: {
       enterOuterAlt(_localctx, 7);
-      setState(235);
+      setState(277);
       type_func();
       break;
     }
@@ -1740,7 +2192,7 @@ size_t SimplexParser::Type_voidContext::getRuleIndex() const {
 
 
 std::any SimplexParser::Type_voidContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<SimplexVisitor*>(visitor))
+  if (auto parserVisitor = dynamic_cast<SimplexParserVisitor*>(visitor))
     return parserVisitor->visitType_void(this);
   else
     return visitor->visitChildren(this);
@@ -1748,7 +2200,7 @@ std::any SimplexParser::Type_voidContext::accept(tree::ParseTreeVisitor *visitor
 
 SimplexParser::Type_voidContext* SimplexParser::type_void() {
   Type_voidContext *_localctx = _tracker.createInstance<Type_voidContext>(_ctx, getState());
-  enterRule(_localctx, 24, SimplexParser::RuleType_void);
+  enterRule(_localctx, 32, SimplexParser::RuleType_void);
 
 #if __cplusplus > 201703L
   auto onExit = finally([=, this] {
@@ -1759,9 +2211,9 @@ SimplexParser::Type_voidContext* SimplexParser::type_void() {
   });
   try {
     enterOuterAlt(_localctx, 1);
-    setState(238);
+    setState(280);
     match(SimplexParser::L_PAREN);
-    setState(239);
+    setState(281);
     match(SimplexParser::R_PAREN);
    
   }
@@ -1811,7 +2263,7 @@ size_t SimplexParser::Type_tupleContext::getRuleIndex() const {
 
 
 std::any SimplexParser::Type_tupleContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<SimplexVisitor*>(visitor))
+  if (auto parserVisitor = dynamic_cast<SimplexParserVisitor*>(visitor))
     return parserVisitor->visitType_tuple(this);
   else
     return visitor->visitChildren(this);
@@ -1819,7 +2271,7 @@ std::any SimplexParser::Type_tupleContext::accept(tree::ParseTreeVisitor *visito
 
 SimplexParser::Type_tupleContext* SimplexParser::type_tuple() {
   Type_tupleContext *_localctx = _tracker.createInstance<Type_tupleContext>(_ctx, getState());
-  enterRule(_localctx, 26, SimplexParser::RuleType_tuple);
+  enterRule(_localctx, 34, SimplexParser::RuleType_tuple);
   size_t _la = 0;
 
 #if __cplusplus > 201703L
@@ -1832,33 +2284,33 @@ SimplexParser::Type_tupleContext* SimplexParser::type_tuple() {
   try {
     size_t alt;
     enterOuterAlt(_localctx, 1);
-    setState(241);
+    setState(283);
     match(SimplexParser::L_PAREN);
-    setState(242);
+    setState(284);
     type_expr();
-    setState(247);
+    setState(289);
     _errHandler->sync(this);
-    alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 29, _ctx);
+    alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 28, _ctx);
     while (alt != 2 && alt != atn::ATN::INVALID_ALT_NUMBER) {
       if (alt == 1) {
-        setState(243);
+        setState(285);
         match(SimplexParser::COMMA);
-        setState(244);
+        setState(286);
         type_expr(); 
       }
-      setState(249);
+      setState(291);
       _errHandler->sync(this);
-      alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 29, _ctx);
+      alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 28, _ctx);
     }
-    setState(251);
+    setState(293);
     _errHandler->sync(this);
 
     _la = _input->LA(1);
     if (_la == SimplexParser::COMMA) {
-      setState(250);
+      setState(292);
       match(SimplexParser::COMMA);
     }
-    setState(253);
+    setState(295);
     match(SimplexParser::R_PAREN);
    
   }
@@ -1924,7 +2376,7 @@ size_t SimplexParser::Type_structContext::getRuleIndex() const {
 
 
 std::any SimplexParser::Type_structContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<SimplexVisitor*>(visitor))
+  if (auto parserVisitor = dynamic_cast<SimplexParserVisitor*>(visitor))
     return parserVisitor->visitType_struct(this);
   else
     return visitor->visitChildren(this);
@@ -1932,7 +2384,7 @@ std::any SimplexParser::Type_structContext::accept(tree::ParseTreeVisitor *visit
 
 SimplexParser::Type_structContext* SimplexParser::type_struct() {
   Type_structContext *_localctx = _tracker.createInstance<Type_structContext>(_ctx, getState());
-  enterRule(_localctx, 28, SimplexParser::RuleType_struct);
+  enterRule(_localctx, 36, SimplexParser::RuleType_struct);
   size_t _la = 0;
 
 #if __cplusplus > 201703L
@@ -1945,41 +2397,41 @@ SimplexParser::Type_structContext* SimplexParser::type_struct() {
   try {
     size_t alt;
     enterOuterAlt(_localctx, 1);
-    setState(255);
+    setState(297);
     match(SimplexParser::L_PAREN);
-    setState(256);
+    setState(298);
     match(SimplexParser::ID);
-    setState(257);
+    setState(299);
     match(SimplexParser::COLON);
-    setState(258);
+    setState(300);
     type_expr();
-    setState(265);
+    setState(307);
     _errHandler->sync(this);
-    alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 31, _ctx);
+    alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 30, _ctx);
     while (alt != 2 && alt != atn::ATN::INVALID_ALT_NUMBER) {
       if (alt == 1) {
-        setState(259);
+        setState(301);
         match(SimplexParser::COMMA);
-        setState(260);
+        setState(302);
         match(SimplexParser::ID);
-        setState(261);
+        setState(303);
         match(SimplexParser::COLON);
-        setState(262);
+        setState(304);
         type_expr(); 
       }
-      setState(267);
+      setState(309);
       _errHandler->sync(this);
-      alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 31, _ctx);
+      alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 30, _ctx);
     }
-    setState(269);
+    setState(311);
     _errHandler->sync(this);
 
     _la = _input->LA(1);
     if (_la == SimplexParser::COMMA) {
-      setState(268);
+      setState(310);
       match(SimplexParser::COMMA);
     }
-    setState(271);
+    setState(313);
     match(SimplexParser::R_PAREN);
    
   }
@@ -2017,7 +2469,7 @@ size_t SimplexParser::Type_arrayContext::getRuleIndex() const {
 
 
 std::any SimplexParser::Type_arrayContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<SimplexVisitor*>(visitor))
+  if (auto parserVisitor = dynamic_cast<SimplexParserVisitor*>(visitor))
     return parserVisitor->visitType_array(this);
   else
     return visitor->visitChildren(this);
@@ -2025,7 +2477,7 @@ std::any SimplexParser::Type_arrayContext::accept(tree::ParseTreeVisitor *visito
 
 SimplexParser::Type_arrayContext* SimplexParser::type_array() {
   Type_arrayContext *_localctx = _tracker.createInstance<Type_arrayContext>(_ctx, getState());
-  enterRule(_localctx, 30, SimplexParser::RuleType_array);
+  enterRule(_localctx, 38, SimplexParser::RuleType_array);
 
 #if __cplusplus > 201703L
   auto onExit = finally([=, this] {
@@ -2036,11 +2488,11 @@ SimplexParser::Type_arrayContext* SimplexParser::type_array() {
   });
   try {
     enterOuterAlt(_localctx, 1);
-    setState(273);
+    setState(315);
     match(SimplexParser::L_BRACKET);
-    setState(274);
+    setState(316);
     type_expr();
-    setState(275);
+    setState(317);
     match(SimplexParser::R_BRACKET);
    
   }
@@ -2086,7 +2538,7 @@ size_t SimplexParser::Type_mapContext::getRuleIndex() const {
 
 
 std::any SimplexParser::Type_mapContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<SimplexVisitor*>(visitor))
+  if (auto parserVisitor = dynamic_cast<SimplexParserVisitor*>(visitor))
     return parserVisitor->visitType_map(this);
   else
     return visitor->visitChildren(this);
@@ -2094,7 +2546,7 @@ std::any SimplexParser::Type_mapContext::accept(tree::ParseTreeVisitor *visitor)
 
 SimplexParser::Type_mapContext* SimplexParser::type_map() {
   Type_mapContext *_localctx = _tracker.createInstance<Type_mapContext>(_ctx, getState());
-  enterRule(_localctx, 32, SimplexParser::RuleType_map);
+  enterRule(_localctx, 40, SimplexParser::RuleType_map);
 
 #if __cplusplus > 201703L
   auto onExit = finally([=, this] {
@@ -2105,15 +2557,15 @@ SimplexParser::Type_mapContext* SimplexParser::type_map() {
   });
   try {
     enterOuterAlt(_localctx, 1);
-    setState(277);
+    setState(319);
     match(SimplexParser::L_BRACKET);
-    setState(278);
+    setState(320);
     type_expr();
-    setState(279);
+    setState(321);
     match(SimplexParser::COLON);
-    setState(280);
+    setState(322);
     type_expr();
-    setState(281);
+    setState(323);
     match(SimplexParser::R_BRACKET);
    
   }
@@ -2183,7 +2635,7 @@ size_t SimplexParser::Type_funcContext::getRuleIndex() const {
 
 
 std::any SimplexParser::Type_funcContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<SimplexVisitor*>(visitor))
+  if (auto parserVisitor = dynamic_cast<SimplexParserVisitor*>(visitor))
     return parserVisitor->visitType_func(this);
   else
     return visitor->visitChildren(this);
@@ -2191,7 +2643,7 @@ std::any SimplexParser::Type_funcContext::accept(tree::ParseTreeVisitor *visitor
 
 SimplexParser::Type_funcContext* SimplexParser::type_func() {
   Type_funcContext *_localctx = _tracker.createInstance<Type_funcContext>(_ctx, getState());
-  enterRule(_localctx, 34, SimplexParser::RuleType_func);
+  enterRule(_localctx, 42, SimplexParser::RuleType_func);
   size_t _la = 0;
 
 #if __cplusplus > 201703L
@@ -2204,45 +2656,45 @@ SimplexParser::Type_funcContext* SimplexParser::type_func() {
   try {
     size_t alt;
     enterOuterAlt(_localctx, 1);
-    setState(283);
+    setState(325);
     match(SimplexParser::L_PAREN);
-    setState(284);
+    setState(326);
     match(SimplexParser::ID);
-    setState(285);
+    setState(327);
     match(SimplexParser::COLON);
-    setState(286);
+    setState(328);
     type_expr();
-    setState(293);
+    setState(335);
     _errHandler->sync(this);
-    alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 33, _ctx);
+    alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 32, _ctx);
     while (alt != 2 && alt != atn::ATN::INVALID_ALT_NUMBER) {
       if (alt == 1) {
-        setState(287);
+        setState(329);
         match(SimplexParser::COMMA);
-        setState(288);
+        setState(330);
         match(SimplexParser::ID);
-        setState(289);
+        setState(331);
         match(SimplexParser::COLON);
-        setState(290);
+        setState(332);
         type_expr(); 
       }
-      setState(295);
+      setState(337);
       _errHandler->sync(this);
-      alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 33, _ctx);
+      alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 32, _ctx);
     }
-    setState(297);
+    setState(339);
     _errHandler->sync(this);
 
     _la = _input->LA(1);
     if (_la == SimplexParser::COMMA) {
-      setState(296);
+      setState(338);
       match(SimplexParser::COMMA);
     }
-    setState(299);
+    setState(341);
     match(SimplexParser::R_PAREN);
-    setState(300);
+    setState(342);
     match(SimplexParser::ARROW);
-    setState(301);
+    setState(343);
     type_expr();
    
   }
@@ -2257,7 +2709,7 @@ SimplexParser::Type_funcContext* SimplexParser::type_func() {
 
 bool SimplexParser::sempred(RuleContext *context, size_t ruleIndex, size_t predicateIndex) {
   switch (ruleIndex) {
-    case 4: return exprSempred(antlrcpp::downCast<ExprContext *>(context), predicateIndex);
+    case 8: return exprSempred(antlrcpp::downCast<ExprContext *>(context), predicateIndex);
 
   default:
     break;
@@ -2278,8 +2730,8 @@ bool SimplexParser::exprSempred(ExprContext *_localctx, size_t predicateIndex) {
 
 void SimplexParser::initialize() {
 #if ANTLR4_USE_THREAD_LOCAL_CACHE
-  simplexParserInitialize();
+  simplexparserParserInitialize();
 #else
-  ::antlr4::internal::call_once(simplexParserOnceFlag, simplexParserInitialize);
+  ::antlr4::internal::call_once(simplexparserParserOnceFlag, simplexparserParserInitialize);
 #endif
 }

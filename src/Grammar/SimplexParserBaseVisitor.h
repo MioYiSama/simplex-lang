@@ -1,23 +1,27 @@
 
-// Generated from src/Grammar/Simplex.g4 by ANTLR 4.13.2
+// Generated from SimplexParser.g4 by ANTLR 4.13.2
 
 #pragma once
 
 
 #include "antlr4-runtime.h"
-#include "SimplexVisitor.h"
+#include "SimplexParserVisitor.h"
 
 
 namespace sx::grammar {
 
 /**
- * This class provides an empty implementation of SimplexVisitor, which can be
+ * This class provides an empty implementation of SimplexParserVisitor, which can be
  * extended to create a visitor which only needs to handle a subset of the available methods.
  */
-class  SimplexBaseVisitor : public SimplexVisitor {
+class  SimplexParserBaseVisitor : public SimplexParserVisitor {
 public:
 
   virtual std::any visitModule(SimplexParser::ModuleContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual std::any visitBlock(SimplexParser::BlockContext *ctx) override {
     return visitChildren(ctx);
   }
 
@@ -26,6 +30,26 @@ public:
   }
 
   virtual std::any visitStatement(SimplexParser::StatementContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual std::any visitIf_statement(SimplexParser::If_statementContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual std::any visitLoop(SimplexParser::LoopContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual std::any visitConditional_loop(SimplexParser::Conditional_loopContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual std::any visitFor_each(SimplexParser::For_eachContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual std::any visitEos(SimplexParser::EosContext *ctx) override {
     return visitChildren(ctx);
   }
 

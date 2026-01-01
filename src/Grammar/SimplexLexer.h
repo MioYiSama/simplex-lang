@@ -1,5 +1,5 @@
 
-// Generated from src/Grammar/Simplex.g4 by ANTLR 4.13.2
+// Generated from SimplexLexer.g4 by ANTLR 4.13.2
 
 #pragma once
 
@@ -13,10 +13,17 @@ namespace sx::grammar {
 class  SimplexLexer : public antlr4::Lexer {
 public:
   enum {
-    L_PAREN = 1, R_PAREN = 2, L_BRACKET = 3, R_BRACKET = 4, L_BRACE = 5, 
-    R_BRACE = 6, COLON = 7, COMMA = 8, ASSIGN = 9, ARROW = 10, ADD = 11, 
-    SUB = 12, MUL = 13, DIV = 14, VAR = 15, CONST = 16, DEF = 17, TYPE = 18, 
-    ID = 19, INTEGER = 20, NEWLINE = 21, WHITESPACE = 22
+    ADD = 1, SUB = 2, MUL = 3, DIV = 4, COMMA = 5, SEMI = 6, COLON = 7, 
+    ASSIGN = 8, ARROW = 9, L_PAREN = 10, R_PAREN = 11, L_BRACKET = 12, R_BRACKET = 13, 
+    L_BRACE = 14, R_BRACE = 15, VAR = 16, CONST = 17, DEF = 18, TYPE = 19, 
+    IF = 20, ELSE = 21, FOR = 22, IN = 23, CONTINUE = 24, BREAK = 25, RETURN = 26, 
+    ID = 27, INTEGER = 28, FLOAT = 29, CHAR = 30, STRING = 31, NEWLINE = 32, 
+    WHITESPACE = 33, LINE_COMMENT = 34, BLOCK_COMMENT = 35, WS_NLSEMI = 36, 
+    COMMENT_NLSEMI = 37, LINE_COMMENT_NLSEMI = 38, EOS = 39, OTHER = 40
+  };
+
+  enum {
+    NLSEMI = 1
   };
 
   explicit SimplexLexer(antlr4::CharStream *input);

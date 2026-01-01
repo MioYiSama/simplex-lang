@@ -1,19 +1,42 @@
-grammar Simplex;
+parser grammar SimplexParser;
+
+options {
+    tokenVocab = SimplexLexer;
+}
 
 module
-    : NEWLINE? // Empty
-    | NEWLINE? decl (NEWLINE decl)* NEWLINE?
+    : (decl (eos decl)*)?
     ;
 
+block
+    : L_BRACE statements? R_BRACE
+    ;
 statements
-    : NEWLINE?
-    | NEWLINE? statement (NEWLINE statement)* NEWLINE?
+    : (statement eos)+
     ;
-
 statement
     : decl
+    | RETURN expr?
+    | CONTINUE
+    | BREAK
+    | if_statement
+    | for_statement
     ;
 
+if_statement
+    : IF expr block (ELSE IF expr block)* (ELSE block)?
+    ;
+
+for_statement
+    : FOR L_BRACE statements R_BRACE            # loop
+    | FOR expr L_BRACE statements R_BRACE       # conditional_loop
+    | FOR ID IN expr L_BRACE statements R_BRACE # for_each
+    ;
+
+eos
+    : SEMI
+    | EOS
+    ;
 decl
     : (DEF | VAR | CONST) ID (COLON type_expr)? ASSIGN expr
     ;
@@ -51,7 +74,7 @@ expr_map
     : L_BRACKET expr COLON expr (COMMA expr COLON expr)* COMMA? R_BRACKET
     ;
 expr_func
-    : L_BRACE type_func NEWLINE statements R_BRACE
+    : L_BRACE type_func statements R_BRACE
     | L_BRACE L_PAREN ID COLON type_expr (
         COMMA ID COLON type_expr
     )* COMMA? R_PAREN ARROW expr R_BRACE
@@ -82,83 +105,6 @@ type_array
 type_map
     : L_BRACKET type_expr COLON type_expr R_BRACKET
     ;
-type_func // (x: Int, y: Int) => Int
+type_func
     : L_PAREN ID COLON type_expr (COMMA ID COLON type_expr)* COMMA? R_PAREN ARROW type_expr
-    ;
-
-// 括号
-L_PAREN
-    : '('
-    ;
-R_PAREN
-    : ')'
-    ;
-L_BRACKET
-    : '['
-    ;
-R_BRACKET
-    : ']'
-    ;
-L_BRACE
-    : '{'
-    ;
-R_BRACE
-    : '}'
-    ;
-
-// 符号
-COLON
-    : ':'
-    ;
-COMMA
-    : ','
-    ;
-ASSIGN
-    : '='
-    ;
-ARROW
-    : '=>'
-    ;
-
-// 运算符
-ADD
-    : '+'
-    ;
-SUB
-    : '-'
-    ;
-MUL
-    : '*'
-    ;
-DIV
-    : '/'
-    ;
-
-// 关键字
-VAR
-    : 'var'
-    ;
-CONST
-    : 'const'
-    ;
-DEF
-    : 'def'
-    ;
-TYPE
-    : 'type'
-    ;
-
-ID
-    : [A-Za-z_][A-Za-z0-9_]*
-    ;
-INTEGER
-    : [0-9]+
-    ;
-
-// 特殊
-NEWLINE
-    : [\r\n]+
-    ;
-WHITESPACE
-    : [ \t]+ -> skip
     ;
